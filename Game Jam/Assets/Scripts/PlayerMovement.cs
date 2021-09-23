@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float jump = 3f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.2f;
     public LayerMask groundMask;
 
     Vector3 velocity;
@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         //Moves the character the certain amount times the speed and time for FPS normalization
         controller.Move(move * speed * Time.deltaTime);
 
+
+        //if the player is on the ground and the user presses the space bar the character will jump
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
 
