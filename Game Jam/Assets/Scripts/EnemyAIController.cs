@@ -19,6 +19,7 @@ public class EnemyAIController : MonoBehaviour
     [Header("Ranged")]
     [SerializeField] bool _delay;
     [SerializeField] GameObject _projectilePrefab;
+    [SerializeField] GameObject _shotpoint;
 
      public enum Enemy {Melee,Ranged,Tank,Flying};
      public Enemy currentEnemy;
@@ -53,6 +54,21 @@ public class EnemyAIController : MonoBehaviour
                 agent.isStopped = true;
                 if(!_enemyDead ){
                     MeleeAttack();
+                }
+            }
+            //if enemy is not within 2 meters, navigate towards player
+            else{
+                agent.isStopped = false;
+                agent.SetDestination(_player.transform.position);
+            
+            }
+        }
+
+         if(enemy == Enemy.Tank){
+            if(_distance < 3f || _enemyDead){
+                agent.isStopped = true;
+                if(!_enemyDead ){
+                    TankAttack();
                 }
             }
             //if enemy is not within 2 meters, navigate towards player
@@ -117,6 +133,10 @@ public class EnemyAIController : MonoBehaviour
         //PlayerHealthController.DamagePlayer(10f);
     }
 
+    private void TankAttack(){
+        //PlayerHealthController.DamagePlayer(10f);
+    }
+
 //profesor johnson is it better to have this take a 
 //gameobect "projectile" and instantiate the parameter? or better to just use the 
 //gameobject projectile prefab the script takes initially 
@@ -125,7 +145,7 @@ public class EnemyAIController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if(_enemyDead == false){
             if(_projectilePrefab != null){
-                Instantiate(_projectilePrefab,transform.position,transform.rotation);
+                Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
             yield return new WaitForSeconds(2f);
             _delay = false;
