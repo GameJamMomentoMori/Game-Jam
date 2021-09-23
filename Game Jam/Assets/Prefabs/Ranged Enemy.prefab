@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 6420450425489510983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 6.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0983, y: 2.0983, z: 2.0983}
   m_Children:
   - {fileID: 5127006843481706288}
   - {fileID: 316466308244159386}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9fe0cc3d3edec49848634fe238362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lookSpeed: 9
+  _lookSpeed: 12
   _distance: 0
   _enemyDead: 0
   agent: {fileID: 5727092499556158575}
@@ -288,10 +288,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 250
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
