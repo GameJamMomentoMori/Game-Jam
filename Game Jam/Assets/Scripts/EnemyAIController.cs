@@ -50,22 +50,26 @@ public class EnemyAIController : MonoBehaviour
         //if enemy type is melee, enemy is not dead, and 
         //distance is less than two meters, stop and attack
         if(enemy == Enemy.Melee){
-            if(_distance < 2f || _enemyDead){
+            if(_distance < 4f || _enemyDead){
                 agent.isStopped = true;
+                LookAtPlayer();
+                //agent.updatePosition = false;
                 if(!_enemyDead ){
                     MeleeAttack();
                 }
             }
             //if enemy is not within 2 meters, navigate towards player
-            else{
+            if(_distance > 4f){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
+                //agent.updatePosition = true;
             
             }
         }
 
          if(enemy == Enemy.Tank){
-            if(_distance < 3f || _enemyDead){
+            if(_distance < 4f || _enemyDead){
+                LookAtPlayer();
                 agent.isStopped = true;
                 if(!_enemyDead ){
                     TankAttack();
@@ -82,7 +86,7 @@ public class EnemyAIController : MonoBehaviour
         //if enemy type is ranged, enemy is alive and distance 
         //is greater than 14m, navigate towards the player 
         if(enemy == Enemy.Ranged){
-            if(_distance > 14f && !_enemyDead){
+            if(_distance > 17f && !_enemyDead){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
             }
@@ -91,7 +95,7 @@ public class EnemyAIController : MonoBehaviour
 
     private void RunFromPlayer(){
         //if enemy alive and distance between 9-14m, stop and shoot
-        if((_distance >= 9f && _distance <= 14f) && !_enemyDead){
+        if((_distance >= 17f && _distance <= 25f) && !_enemyDead){
             agent.isStopped = true;
             LookAtPlayer();
             if(!_delay){
@@ -106,13 +110,13 @@ public class EnemyAIController : MonoBehaviour
             
         }
         //if enemy is less than 9 meters, run away from player
-        else if(_distance < 9f ){
+        else if(_distance < 17f ){
             agent.isStopped = false;
-            
+            //LookAwayFromPlayer();
             Vector3 directionToPlayer = transform.position - _player.transform.position;
             Vector3 runAwayPos = transform.position + directionToPlayer;
             agent.SetDestination(runAwayPos);
-            //LookAwayFromPlayer();
+            
             
         }
     }
@@ -134,7 +138,7 @@ public class EnemyAIController : MonoBehaviour
     }
 
     private void TankAttack(){
-        //PlayerHealthController.DamagePlayer(10f);
+        //PlayerHealthController.DamagePlayer(30f);
     }
 
 //profesor johnson is it better to have this take a 
@@ -147,7 +151,7 @@ public class EnemyAIController : MonoBehaviour
             if(_projectilePrefab != null){
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             _delay = false;
         }
     }

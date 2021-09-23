@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 477612253}
   - component: {fileID: 477612252}
   m_Layer: 0
-  m_Name: rar
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,6 +560,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6709361804972297736, guid: 89786fb4b82943841a705bd439faae08,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 5.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89786fb4b82943841a705bd439faae08, type: 3}
 --- !u!1001 &1329335777486976345
@@ -573,6 +578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Melee Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329335778605978818, guid: d014ded1a11fbb64194ccdfb9e24e239,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1329335778605978873, guid: d014ded1a11fbb64194ccdfb9e24e239,
         type: 3}
@@ -698,11 +708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 9009831356596725464, guid: 6090dc5b71bf1134fb4586131aa37fa6,
+    - target: {fileID: 6420450425489510983, guid: 6090dc5b71bf1134fb4586131aa37fa6,
         type: 3}
-      propertyPath: _projectilePrefab
-      value: 
-      objectReference: {fileID: 6080606393407781269, guid: fbf4f5ae8c88c6143b6b0cffedbbbeee,
-        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
