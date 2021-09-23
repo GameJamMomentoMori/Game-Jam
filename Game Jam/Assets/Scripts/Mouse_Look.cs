@@ -7,6 +7,8 @@ public class Mouse_Look : MonoBehaviour
 
     public float mouseSensitivity = 100f;
 
+    public static bool cursorLocked = true;
+
     public Transform playerBody;
 
     float xRotation = 0f;
@@ -16,11 +18,24 @@ public class Mouse_Look : MonoBehaviour
     {
         //Locks the cursor to the screen
         CursorLock.cursorLocked = true;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Lock the cursor to the screen if the bool reads true
+        if (cursorLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         //Mouse movement for camera control 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
