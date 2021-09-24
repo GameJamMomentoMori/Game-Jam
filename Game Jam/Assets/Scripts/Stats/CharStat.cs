@@ -8,27 +8,75 @@ public class CharStat : MonoBehaviour
     public Stat dmg;
     public Stat armor;
 
-    void Awake() {
+    public HUDHealth healthBar;
+
+    void Start()
+    {
+        // Set healthbar max to the max hp
+        healthBar.SetMaxHealth(maxHP);
+    }
+
+    void Awake()
+    {
         currHP = maxHP;
     }
 
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.T)) TakeDmg(10);
+    void Update()
+    {
+        // Can remove these eventually - just used for debugging for now
+        if (Input.GetKeyDown(KeyCode.T)) damage(10);
+        if (Input.GetKeyDown(KeyCode.R)) heal(10);
+        if (Input.GetKeyDown(KeyCode.E)) Debug.Log(transform.name + " has " + getHealth() + " health");
+
+
     }
 
-    public void TakeDmg(int dmg) {
+    // Damages the player 
+    // To have enemy damage player, invoke CharStat.damage(x), where x is amount damaged
+    public void damage(int dmg)
+    {
         //dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
 
         Debug.Log(transform.name + " takes " + dmg + " damage");
 
-        if (currHP <= 0) {
+        // Update health bar
+        healthBar.SetHealth(currHP);
+
+        // Check if player was killed
+        if (currHP <= 0)
+        {
             Die();
         }
     }
 
-    public virtual void Die() {
+    // Heals the player 
+    // To heal player, invoke CharStat.heal(x), where x is amount restored
+    public void heal(int res)
+    {
+        currHP += res;
+
+        // Prevents healing past max health
+        if (currHP > maxHP)
+        {
+            currHP = maxHP;
+        }
+
+        // Update health bar
+        healthBar.SetHealth(currHP);
+
+        Debug.Log(transform.name + " heals " + res + " health");
+    }
+
+    // Gets the current player health (mainly used for UI)
+    public int getHealth()
+    {
+        return currHP;
+    }
+
+    public virtual void Die()
+    {
         //Die in some way
         //This method is meant to be overwritten
         Debug.Log(transform.name + " died");
