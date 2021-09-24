@@ -535,7 +535,7 @@ MonoBehaviour:
     baseVal: 0
   armor:
     baseVal: 0
-  HPBar: {fileID: -3484531064893641115}
+  HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
 --- !u!136 &2122546764
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f118f78ad4565fb4a8d76c502cd05d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 853469737571619875, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
 --- !u!1 &6300306052813843154
 GameObject:
   m_ObjectHideFlags: 0
