@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 6300306051578700570}
   - component: {fileID: 6300306051578700568}
   - component: {fileID: 3354081324081655747}
+  - component: {fileID: -3516612719398434097}
   m_Layer: 3
   m_Name: FirstPersonPlayer
   m_TagString: Untagged
@@ -514,6 +515,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ff6cdafeeeab14c92ac2645e401d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3516612719398434097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300306051578700573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e6e3a1091dba408b5244dd20c0ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  maxSP: 25
+  dmg:
+    baseVal: 0
+  armor:
+    baseVal: 0
 --- !u!1 &6300306052813843154
 GameObject:
   m_ObjectHideFlags: 0

@@ -572,16 +572,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 888626026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f238428c116d64596855b079a92978, type: 3}
+  m_Script: {fileID: 11500000, guid: f65e6e3a1091dba408b5244dd20c0ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
   maxSP: 25
   dmg:
-    baseValue: 0
+    baseVal: 0
   armor:
-    baseValue: 0
-  healthBar: {fileID: 0}
+    baseVal: 0
 --- !u!1 &1184457855
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +743,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstPersonPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3516612719398434097, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
 --- !u!4 &1746000011 stripped
 Transform:
@@ -834,10 +834,9 @@ MonoBehaviour:
   maxHP: 100
   maxSP: 25
   dmg:
-    baseValue: 0
+    baseVal: 0
   armor:
-    baseValue: 0
-  healthBar: {fileID: 0}
+    baseVal: 0
 --- !u!1 &1926658289
 GameObject:
   m_ObjectHideFlags: 0

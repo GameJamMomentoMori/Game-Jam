@@ -205,7 +205,7 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator MeleeAttack(){
         _delay = true;
-        charstat.DamagePlayer(10);
+        charstat.TakeDmg(10);
         yield return new WaitForSeconds(2f);
         _delay = false;
     }
@@ -216,7 +216,7 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator TankAttack(){
         _delay = true;
-        charstat.DamagePlayer(20);
+        charstat.TakeDmg(20);
         yield return new WaitForSeconds(2f);
         _delay = false;
     }
