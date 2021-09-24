@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17aec8cc60881a440854302bc52e1bdf
+guid: af76c84b1193c6841b53c2687dedf38d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Bone2
-    second: {fileID: 2100000, guid: ea70dadcfe0d9b3408e52fbaae56baf8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_bone
-    second: {fileID: 2100000, guid: 91b0c5fff6f5eca4b90d6d1142597ffe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_skel
-    second: {fileID: 2100000, guid: 940a2377aedb6314297a425b5b63f645, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_sword
-    second: {fileID: 2100000, guid: f4a56404fb4a34a40992d1d5250af9a6, type: 2}
+      name: M_Grass
+    second: {fileID: 2100000, guid: b29afb1af317dec43bff9da1f279abc6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -54,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 60
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -105,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.59999996
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
