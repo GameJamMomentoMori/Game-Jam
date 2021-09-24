@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 7479628758061658213}
   m_Layer: 7
   m_Name: Flying Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,15 +315,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEnemy: 3
+  _animator: {fileID: 0}
   _lookSpeed: 12
   _distance: 0
   _enemyDead: 0
   agent: {fileID: 7479628758061658213}
-  _delay: 0
   _projectilePrefab: {fileID: 6080606393407781269, guid: fbf4f5ae8c88c6143b6b0cffedbbbeee,
     type: 3}
   _shotpoint: {fileID: 1288129626848315274}
   _random: 0
+  _delay: 0
   _flyEmpties:
   - {fileID: 0}
   - {fileID: 0}

@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5727092499556158575}
   m_Layer: 0
   m_Name: Ranged Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEnemy: 1
+  _animator: {fileID: 0}
   _lookSpeed: 12
   _distance: 0
   _enemyDead: 0
