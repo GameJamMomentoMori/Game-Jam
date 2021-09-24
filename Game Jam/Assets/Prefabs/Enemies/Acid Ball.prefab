@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2410905392140974167}
   - component: {fileID: 2410905392140974166}
   - component: {fileID: 8407704742119755725}
+  - component: {fileID: 1317559683804378925}
   m_Layer: 7
   m_Name: Acid Ball
   m_TagString: Untagged
@@ -92,7 +93,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410905392140974165}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -130,3 +131,17 @@ MonoBehaviour:
   h: 1.5
   gravity: -25
   debugPath: 0
+--- !u!114 &1317559683804378925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410905392140974165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcee7215a56940479501c36cde5b998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleCollide: {fileID: 7620005191391955006, guid: 7fbc11efd68660d468cd1d7ca4b1aaaa,
+    type: 3}
