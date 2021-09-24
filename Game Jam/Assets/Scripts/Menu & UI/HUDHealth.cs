@@ -7,14 +7,13 @@ public class HUDHealth : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxHealth(int max)
+    public void SetMaxHealth(int HP)
     {
-        slider.maxValue = max;
-        slider.value = max;
+        slider.maxValue = HP;
+        slider.value = HP;
     }
 
-    public void SetHealth(int health)
-    {
+    public void SetHealth(int health) {
         slider.value = health;
     }
 

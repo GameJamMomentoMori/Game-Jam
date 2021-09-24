@@ -7,9 +7,11 @@ public class CharStat : MonoBehaviour
     public int maxSP = 25; //for magic consumption
     public Stat dmg;
     public Stat armor;
+    public HUDHealth HPBar;
 
     void Awake() {
         currHP = maxHP;
+        HPBar.SetMaxHealth(maxHP);
     }
 
     void Update() {
@@ -22,6 +24,7 @@ public class CharStat : MonoBehaviour
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
+        HPBar.SetHealth(currHP);
 
         Debug.Log(transform.name + " takes " + dmg + " damage");
 

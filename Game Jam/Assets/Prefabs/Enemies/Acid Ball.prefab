@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8407704742119755725}
   - component: {fileID: 1317559683804378925}
   - component: {fileID: -7053638764274206147}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Acid Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410905392140974165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.7, y: 6, z: 9.6}
-  m_LocalScale: {x: 0.68, y: 0.68, z: 0.68}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
