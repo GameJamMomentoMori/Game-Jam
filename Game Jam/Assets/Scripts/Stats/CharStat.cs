@@ -19,7 +19,7 @@ public class CharStat : MonoBehaviour
     }
 
     public void DamagePlayer(int dmg) {
-        //dmg -= armor.getVal();
+        dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
 

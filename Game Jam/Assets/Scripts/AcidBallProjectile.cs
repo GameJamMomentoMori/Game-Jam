@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class AcidBallProjectile : MonoBehaviour
 {
-    [SerializeField] float _projectileSpeed;
-    [SerializeField] GameObject _particleCollide;
-    void Start(){
-        Destroy(this.gameObject, 15f);
-    }
     // Start is called before the first frame update
-    void Update()
+    [SerializeField] GameObject _particleCollide;
+    void Start()
     {
-        transform.Translate(Vector3.forward*_projectileSpeed*Time.deltaTime);
+        
     }
 
+    // Update is called once per frame
     void OnTriggerEnter(Collider other){
         if(other.tag != "Enemy"){
             Instantiate(_particleCollide,transform.position,Quaternion.identity);
