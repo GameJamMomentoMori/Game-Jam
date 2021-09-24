@@ -6,13 +6,14 @@ using UnityEngine;
 public class Stat
 {
     [SerializeField]
-    private int baseValue;
+    private int baseVal;
 
     private List<int> mods = new List<int>();
 
     public int getVal() {
-        //int finalVal = baseVal;
-        return baseValue;
+        int finalVal = baseVal;
+        mods.ForEach(x => finalVal += x);
+        return finalVal;
     }
 
     public void AddMod(int mod) {
@@ -26,5 +27,5 @@ public class Stat
             mods.Remove(mod);
         }
     }
-   
+
 }

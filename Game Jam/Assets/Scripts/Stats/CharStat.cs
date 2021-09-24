@@ -7,76 +7,33 @@ public class CharStat : MonoBehaviour
     public int maxSP = 25; //for magic consumption
     public Stat dmg;
     public Stat armor;
+    public HUDHealth HPBar;
 
-    public HUDHealth healthBar;
-
-    void Start()
-    {
-        // Set healthbar max to the max hp
-        healthBar.SetMaxHealth(maxHP);
-    }
-
-    void Awake()
-    {
+    void Awake() {
         currHP = maxHP;
+        HPBar.SetMaxHealth(maxHP);
     }
 
-    void Update()
-    {
-        // Can remove these eventually - just used for debugging for now
-        if (Input.GetKeyDown(KeyCode.T)) damage(10);
-        if (Input.GetKeyDown(KeyCode.R)) heal(10);
-        if (Input.GetKeyDown(KeyCode.E)) Debug.Log(transform.name + " has " + getHealth() + " health");
-
-
+    void Update() {
+        // if(Input.GetKeyDown(KeyCode.T)){
+        //     TakeDmg(10);
+        // }
     }
 
-    // Damages the player 
-    // To have enemy damage player, invoke CharStat.damage(x), where x is amount damaged
-    public void damage(int dmg)
-    {
-        //dmg -= armor.getVal();
+    public void TakeDmg(int dmg) {
+        dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
+        HPBar.SetHealth(currHP);
 
         Debug.Log(transform.name + " takes " + dmg + " damage");
 
-        // Update health bar
-        healthBar.SetHealth(currHP);
-
-        // Check if player was killed
-        if (currHP <= 0)
-        {
+        if (currHP <= 0) {
             Die();
         }
     }
 
-    // Heals the player 
-    // To heal player, invoke CharStat.heal(x), where x is amount restored
-    public void heal(int res)
-    {
-        currHP += res;
-
-        // Prevents healing past max health
-        if (currHP > maxHP)
-        {
-            currHP = maxHP;
-        }
-
-        // Update health bar
-        healthBar.SetHealth(currHP);
-
-        Debug.Log(transform.name + " heals " + res + " health");
-    }
-
-    // Gets the current player health (mainly used for UI)
-    public int getHealth()
-    {
-        return currHP;
-    }
-
-    public virtual void Die()
-    {
+    public virtual void Die() {
         //Die in some way
         //This method is meant to be overwritten
         Debug.Log(transform.name + " died");
