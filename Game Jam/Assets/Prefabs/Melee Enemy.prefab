@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329335778605978873
 Transform:
   m_ObjectHideFlags: 0
@@ -143,14 +143,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9fe0cc3d3edec49848634fe238362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEnemy: 0
   _lookSpeed: 7
   _distance: 0
   _enemyDead: 0
   agent: {fileID: 1329335778605978872}
-  _delay: 0
   _projectilePrefab: {fileID: 0}
   _shotpoint: {fileID: 0}
-  currentEnemy: 0
+  _random: 0
+  _delay: 0
+  _flyEmpties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _projectileGravityPrefab: {fileID: 0}
 --- !u!195 &1329335778605978872
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -269,15 +269,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9fe0cc3d3edec49848634fe238362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEnemy: 1
   _lookSpeed: 12
   _distance: 0
   _enemyDead: 0
   agent: {fileID: 5727092499556158575}
-  _delay: 0
   _projectilePrefab: {fileID: 6080606393407781269, guid: fbf4f5ae8c88c6143b6b0cffedbbbeee,
     type: 3}
   _shotpoint: {fileID: 4131518161363516288}
-  currentEnemy: 1
+  _random: 0
+  _delay: 0
+  _flyEmpties: []
+  _projectileGravityPrefab: {fileID: 0}
 --- !u!195 &5727092499556158575
 NavMeshAgent:
   m_ObjectHideFlags: 0

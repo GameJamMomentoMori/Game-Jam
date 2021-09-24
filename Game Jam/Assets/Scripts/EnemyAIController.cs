@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyAIController : MonoBehaviour
 {
+    public enum Enemy {Melee,Ranged,Tank,Flying};
+    public Enemy currentEnemy;
+    
     [Header("Customizable")]
     [SerializeField] float _lookSpeed = 5f;
     [SerializeField] float _distance;
@@ -17,23 +20,45 @@ public class EnemyAIController : MonoBehaviour
     public NavMeshAgent agent;
     
     [Header("Ranged")]
-    [SerializeField] bool _delay;
     [SerializeField] GameObject _projectilePrefab;
     [SerializeField] GameObject _shotpoint;
 
-     public enum Enemy {Melee,Ranged,Tank,Flying};
-     public Enemy currentEnemy;
+    [Header("Attack and Movement Delays")]
+    [SerializeField] bool _random;
+    [SerializeField] bool _delay;
 
+    [Header("Flying")]
+    [SerializeField] GameObject[] _flyEmpties = new GameObject[8];
+    [SerializeField] GameObject _projectileGravityPrefab;
+    
+    CharStat charstat;
+    LaunchBall launchball;
+
+    ////
+    //#/ Awake function assigns player and accesses
+    //#/ character stats from player
+    ////
     void Awake()
     {
         _player = GameObject.Find("FirstPersonPlayer");
+        charstat = _player.GetComponent<CharStat>();
     }
 
+    ////
+    //#/ Start function calls populate enemy
+    //#/ if enemy enum is flying
+    ////
     void Start(){
-        //currentEnemy = Enemy.Melee;
+        if(currentEnemy == Enemy.Flying){
+            PopulateFlyingArray();
+        }
     }
 
-    // Update is called once per frame
+    ////
+    //#/ Most enemies follow player, so we call that
+    //#/ every frame and differentiate enums later inside the function.
+    //#/ Ranged is the only enemy that runs from the player.
+    ////
     void Update()
     {
         FollowPlayer(currentEnemy);
@@ -44,26 +69,38 @@ public class EnemyAIController : MonoBehaviour
     }
 
     ////
+    //#/ This function finds and assigns all player 
+    //#/ empty transforms for the flying enemy to move to.
+    ////
+    void PopulateFlyingArray(){
+        for(int i = 0; i < 8; i++){
+            _flyEmpties[i] = GameObject.Find("FlyTransform" + i);
+            }
+    }
+    ////
+    //#/ FollowPlayer function takes enemy enum parameter and
+    //#/ determines AI using passed enum. Melee & tank enemies walk towards player close,
+    //#/ ranged enemies start following at a further distance, and flying enemies trigger
+    //#/ RandomFlyingPosition to move towards the empties assigned in PopulateFlyingArray.
+    ////
     private void FollowPlayer(Enemy enemy){
         _distance = Vector3.Distance(_player.transform.position, this.transform.position);
         
         //if enemy type is melee, enemy is not dead, and 
         //distance is less than two meters, stop and attack
         if(enemy == Enemy.Melee){
-            if(_distance < 4f || _enemyDead){
+            if(_distance < 3f || _enemyDead){
                 agent.isStopped = true;
                 LookAtPlayer();
-                //agent.updatePosition = false;
-                if(!_enemyDead ){
-                    MeleeAttack();
+                if(_enemyDead == false){
+                    if(_delay == false)
+                    StartCoroutine(MeleeAttack());
                 }
             }
-            //if enemy is not within 2 meters, navigate towards player
+            //if enemy is not within 4 meters, navigate towards player
             if(_distance > 4f){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
-                //agent.updatePosition = true;
-            
             }
         }
 
@@ -72,29 +109,40 @@ public class EnemyAIController : MonoBehaviour
                 LookAtPlayer();
                 agent.isStopped = true;
                 if(!_enemyDead ){
-                    TankAttack();
+                     if(_delay == false)
+                        StartCoroutine(TankAttack());
                 }
             }
             //if enemy is not within 2 meters, navigate towards player
             else{
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
-            
             }
         }
 
         //if enemy type is ranged, enemy is alive and distance 
-        //is greater than 14m, navigate towards the player 
+        //is greater than 17m, navigate towards the player 
         if(enemy == Enemy.Ranged){
             if(_distance > 17f && !_enemyDead){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
             }
         }
+        
+        if(enemy == Enemy.Flying){
+            LookAtPlayer();
+            if(_random == false){
+                StartCoroutine(RandomFlyingPosition());
+            }
+        }
     }
 
+    ////
+    //#/ Script used only by ranged enemy. Chooses a runaway position in the
+    //#/ opposite direction of player when enemy is too close.
+    ////
     private void RunFromPlayer(){
-        //if enemy alive and distance between 9-14m, stop and shoot
+        //if enemy alive and distance between 17-25m, stop and shoot
         if((_distance >= 17f && _distance <= 25f) && !_enemyDead){
             agent.isStopped = true;
             LookAtPlayer();
@@ -109,49 +157,108 @@ public class EnemyAIController : MonoBehaviour
             }
             
         }
-        //if enemy is less than 9 meters, run away from player
+        //if enemy is less than 17 meters, run away from player
         else if(_distance < 17f ){
             agent.isStopped = false;
-            //LookAwayFromPlayer();
             Vector3 directionToPlayer = transform.position - _player.transform.position;
             Vector3 runAwayPos = transform.position + directionToPlayer;
             agent.SetDestination(runAwayPos);
-            
-            
         }
     }
 
+    ////
+    //#/ Random flying position chooses one of eight empty player children from
+    //#/ flyEmpties[] and sets it as the AI/s destination at random intervals.
+    //#/ Also activates attack script periodically.
+    ////
+    IEnumerator RandomFlyingPosition(){
+        _random = true;
+        agent.SetDestination(_flyEmpties[Random.Range(0,_flyEmpties.Length-1)].transform.position);
+        yield return new WaitForSeconds(Random.Range(2f,4f));
+        StartCoroutine(FlyingAttack());
+        _random = false;
+    }
+
+    ////
+    //#/ LookAtPlayer is only really useful for making Melee player face enemy when
+    //#/ super close. Otherwise, AI Navmesh component makes enemy face the way it walks
+    //#/ It is also called every frame for flying enemies 
+    //// 
     private void LookAtPlayer(){
         Vector3 direction = _player.transform.position - transform.position;
         direction.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _lookSpeed * Time.deltaTime);
     }
-    
+
+    ////
+    //#/ LookAwayFromPlayer is called for the ranged enemy when the player is too close.
+    //// 
     private void LookAwayFromPlayer(){
         Vector3 awayDirection = _player.transform.position + transform.position;
         awayDirection.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(awayDirection), _lookSpeed * Time.deltaTime);
     }
 
-    private void MeleeAttack(){
-        //PlayerHealthController.DamagePlayer(10f);
+    ////
+    //#/ EnemyDeath is called when the player deals enough damage to the enemy.
+    //#/ It plays animations, destroys the enemy, and instantiates effects.
+    //// 
+    private void EnemyDeath(){
+        Destroy(this.gameObject,1f);
+        Debug.Log(currentEnemy + " dead.");
     }
 
-    private void TankAttack(){
-        //PlayerHealthController.DamagePlayer(30f);
-    }
-
-//profesor johnson is it better to have this take a 
-//gameobect "projectile" and instantiate the parameter? or better to just use the 
-//gameobject projectile prefab the script takes initially 
-    private IEnumerator RangedAttack(){
+    ////
+    //#/ MeleeAttack deals damage to the player. Still needs a PhysicsOverlap bool so that
+    //#/ it does not do damage to the player if they can escape in time.
+    //// 
+    IEnumerator MeleeAttack(){
         _delay = true;
-        yield return new WaitForSeconds(0.5f);
+        charstat.DamagePlayer(10);
+        yield return new WaitForSeconds(2f);
+        _delay = false;
+    }
+
+    ////
+    //#/ TankAttack deals damage to the player. Still needs a PhysicsOverlap bool so that
+    //#/ it does not do damage to the player if they can escape in time.
+    //// 
+    IEnumerator TankAttack(){
+        _delay = true;
+        charstat.DamagePlayer(20);
+        yield return new WaitForSeconds(2f);
+        _delay = false;
+    }
+
+    ////
+    //#/ RangedAttack instantiates a projectile randomly at the ranged enemies position.
+    //#/ It rotates the projectile in the direction of the player, while the projectile itself
+    //#/ controls its own veloctity. It uses delay to prevent repeated calling.
+    //// 
+    IEnumerator RangedAttack(){
+        _delay = true;
+        yield return new WaitForSeconds(Random.Range(0.5f,2f));
         if(_enemyDead == false){
-            if(_projectilePrefab != null){
+            if(_projectilePrefab != null){ //check if the prefab is assigned so no errors are returned
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(Random.Range(3f,6f));
+            _delay = false;
+        }
+    }
+
+    ////
+    //#/ FlyingAttack instantiates a projectile randomly with gravity using an assigned prefab.
+    //#/ The prefav handles its own trajectory.
+    //// 
+    IEnumerator FlyingAttack(){
+        _delay = true;
+        yield return new WaitForSeconds(Random.Range(4f,6f));
+        if(_enemyDead == false){
+            if(_projectileGravityPrefab != null){ //check if the prefab is assigned so no errors are returned
+                Instantiate(_projectileGravityPrefab,_shotpoint.transform.position,Quaternion.identity);
+            }
+            yield return new WaitForSeconds(Random.Range(3f,5f));
             _delay = false;
         }
     }
