@@ -21,4 +21,9 @@ public class PlayerStats : CharStat
             dmg.RemoveMod(newItem.armorMod);
         }
     }
+
+    public override void Die() {
+        base.Die();
+        PlayerManager.instance.KillPlayer();
+    }
 }

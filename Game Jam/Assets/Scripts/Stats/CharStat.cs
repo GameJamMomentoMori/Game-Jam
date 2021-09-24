@@ -13,12 +13,12 @@ public class CharStat : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.T)){
-            DamagePlayer(10);
-        }
+        // if(Input.GetKeyDown(KeyCode.T)){
+        //     TakeDmg(10);
+        // }
     }
 
-    public void DamagePlayer(int dmg) {
+    public void TakeDmg(int dmg) {
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
