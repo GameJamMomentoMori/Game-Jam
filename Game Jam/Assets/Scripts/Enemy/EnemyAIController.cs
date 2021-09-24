@@ -7,7 +7,7 @@ public class EnemyAIController : MonoBehaviour
 {
     public enum Enemy {Melee,Ranged,Tank,Flying};
     public Enemy currentEnemy;
-    
+    [SerializeField] Animator _animator; 
     [Header("Customizable")]
     [SerializeField] float _lookSpeed = 5f;
     [SerializeField] float _distance;
@@ -197,15 +197,6 @@ public class EnemyAIController : MonoBehaviour
         Vector3 awayDirection = _player.transform.position + transform.position;
         awayDirection.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(awayDirection), _lookSpeed * Time.deltaTime);
-    }
-
-    ////
-    //#/ EnemyDeath is called when the player deals enough damage to the enemy.
-    //#/ It plays animations, destroys the enemy, and instantiates effects.
-    //// 
-    private void EnemyDeath(){
-        Destroy(this.gameObject,1f);
-        Debug.Log(currentEnemy + " dead.");
     }
 
     ////
