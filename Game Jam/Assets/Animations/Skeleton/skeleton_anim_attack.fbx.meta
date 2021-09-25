@@ -6,7 +6,27 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Attack
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Bone2
+    second: {fileID: 2100000, guid: ea70dadcfe0d9b3408e52fbaae56baf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_bone
+    second: {fileID: 2100000, guid: 91b0c5fff6f5eca4b90d6d1142597ffe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_skel
+    second: {fileID: 2100000, guid: 940a2377aedb6314297a425b5b63f645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_sword
+    second: {fileID: 2100000, guid: f4a56404fb4a34a40992d1d5250af9a6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -117,7 +137,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.65
+    globalScale: 65
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
