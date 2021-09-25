@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Projectile : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Projectile : MonoBehaviour
          if(other.tag != "Enemy"){
             if(other.tag == "Player"){
                 charstat.TakeDmg(5);
+                CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
             }
             Instantiate(_particleCollide,transform.position,Quaternion.identity);
             Destroy(this.gameObject);

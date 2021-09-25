@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using EZCameraShake;
 
 public class EnemyAIController : MonoBehaviour
 {
@@ -230,9 +231,10 @@ public class EnemyAIController : MonoBehaviour
         _animator.SetBool("Attack",true);
         yield return new WaitForSeconds(0.3f);
 
-        if(_range) 
-        charstat.TakeDmg(10);
-
+        if(_range){
+            charstat.TakeDmg(10);
+            CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+        }
         yield return new WaitForSeconds(0.1f);
         _animator.SetBool("Attack",false);
         yield return new WaitForSeconds(1f);
@@ -249,9 +251,10 @@ public class EnemyAIController : MonoBehaviour
         _animator.SetBool("Attack",true);
         yield return new WaitForSeconds(1f);
         
-        if(_range)
-        charstat.TakeDmg(20);
-
+        if(_range){
+            charstat.TakeDmg(20);
+            CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
+        }
         //if(_distance > 7f){
         _animator.SetBool("Attack",false);
             //_animator.Play("Idle");

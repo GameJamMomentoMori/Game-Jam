@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class CharStat : MonoBehaviour
 {
     public int maxHP = 100;
@@ -24,6 +25,7 @@ public class CharStat : MonoBehaviour
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
+        
         HPBar.SetHealth(currHP);
 
         Debug.Log(transform.name + " takes " + dmg + " damage");
