@@ -1,32 +1,12 @@
 fileFormatVersion: 2
-guid: f0861caba24498347bd5b284763612aa
+guid: ef767f0090ae8aa4cb1ab5914d970d5d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_GarEye
-    second: {fileID: 2100000, guid: f9d3a09be65a3554481f6daacfcc539e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_garBall
-    second: {fileID: 2100000, guid: caf6fd2289231ec46ba5f2d2a40b8caf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_garChest
-    second: {fileID: 2100000, guid: 8ec0837492c3e444b9d9e4473f619590, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_garSkin
-    second: {fileID: 2100000, guid: c3abdd44c84c1f94e82c90a2009d5e4d, type: 2}
+    second: Attack
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -55,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Attack
       takeName: Take 001
       internalID: 0
       firstFrame: 1
