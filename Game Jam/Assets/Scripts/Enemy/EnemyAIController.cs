@@ -12,7 +12,7 @@ public class EnemyAIController : MonoBehaviour
     [Header("Customizable")]
     [SerializeField] float _lookSpeed = 5f;
     [SerializeField] float _distance;
-    [SerializeField] float _radius = 6.5f;
+    [SerializeField] float _radius;
     [SerializeField] bool _range = false;
     [SerializeField] LayerMask L_Player;
     [SerializeField] Transform _attackTransform;
@@ -57,6 +57,14 @@ public class EnemyAIController : MonoBehaviour
         if(currentEnemy == Enemy.Flying){
             PopulateFlyingArray();
         }
+
+        if(currentEnemy == Enemy.Tank){
+            _radius = 6.5f;
+        }
+
+        if(currentEnemy == Enemy.Melee){
+            _radius = 1.25f;
+        }
     }
 
     ////
@@ -66,9 +74,9 @@ public class EnemyAIController : MonoBehaviour
     ////
     void Update()
     {
-
-        _range = Physics.CheckSphere(_attackTransform.position, _radius, L_Player);
-
+        if(currentEnemy == Enemy.Melee || currentEnemy == Enemy.Tank){
+            _range = Physics.CheckSphere(_attackTransform.position, _radius, L_Player);
+        }
         FollowPlayer(currentEnemy);
         
          if(currentEnemy == Enemy.Ranged){
@@ -97,9 +105,12 @@ public class EnemyAIController : MonoBehaviour
         //if enemy type is melee, enemy is not dead, and 
         //distance is less than two meters, stop and attack
         if(enemy == Enemy.Melee){
-            if(_distance < 4f || _enemyDead){
-                agent.isStopped = true;
+            if(_distance < 5f){
                 LookAtPlayer();
+            }
+            if(_distance < 4.2f || _enemyDead){
+                agent.isStopped = true;
+                //LookAtPlayer();
                 if(_enemyDead == false){
                     if(_delay == false)
                     StartCoroutine(MeleeAttack());
@@ -216,27 +227,15 @@ public class EnemyAIController : MonoBehaviour
     IEnumerator MeleeAttack(){
         _delay = true;
         agent.isStopped = true;
-
         _animator.SetBool("Attack",true);
+        yield return new WaitForSeconds(0.3f);
+
         if(_range) 
         charstat.TakeDmg(10);
 
-
-//I NEED TO SET ENEMY RANGE PER ENEMY TYPE 6.5 for TANK REMEMBER
-
-
-
-
-
-
-
-
-
-
-
-        
+        yield return new WaitForSeconds(0.1f);
         _animator.SetBool("Attack",false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         _delay = false;
     }
 
@@ -270,11 +269,17 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator RangedAttack(){
         _delay = true;
-        yield return new WaitForSeconds(Random.Range(0.5f,2f));
+        
+        //_animator.SetBool("Attack",true);
         if(_enemyDead == false){
             if(_projectilePrefab != null){ //check if the prefab is assigned so no errors are returned
+                _animator.SetBool("Attack",true);
+               // _animator.Play("Attack");
+                yield return new WaitForSeconds(1f);
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
+            yield return new WaitForSeconds(0.1f);
+            _animator.SetBool("Attack",false);
             yield return new WaitForSeconds(Random.Range(3f,6f));
             _delay = false;
         }
