@@ -15,12 +15,6 @@ public class CharStat : MonoBehaviour
         HPBar.SetMaxHealth(maxHP);
     }
 
-    void Update() {
-        // if(Input.GetKeyDown(KeyCode.T)){
-        //     TakeDmg(10);
-        // }
-    }
-
     public void TakeDmg(int dmg) {
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);

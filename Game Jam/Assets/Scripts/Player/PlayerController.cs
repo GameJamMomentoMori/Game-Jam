@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharStat))]
 public class PlayerController : MonoBehaviour
 {
     Camera cam;
@@ -10,9 +11,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _playerProjectile;
     [SerializeField] Transform _firepointTransform;
     [SerializeField] bool _delay = false;
+    public Interactable focus;
+    CharStat myStats;
+    EnemyHealthController enemyStats;
 
     void Start() {
         cam = Camera.main;
+        myStats = GetComponent<CharStat>();
     }
 
     // Update is called once per frame
@@ -30,7 +35,13 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit, 100)) {
-                
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if(interactable != null) {
+                    focus.Interact();
+                    //SetFocus(interactable);
+                    //Debug.Log(transform.name + " hit");
+                }
+                //enemyStats.TakeDmg(myStats.dmg.getVal());                
             }
         }
 
@@ -40,13 +51,6 @@ public class PlayerController : MonoBehaviour
                 _playerLeftAnimator.Play("Magic Attack");
                 StartCoroutine(Projectile());
             }
-
-            //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit;
-            //if(Physics.Raycast(ray, out hit)) {
-
-                //Fire projectile
-            //}
         }
     }
 
@@ -56,5 +60,9 @@ public class PlayerController : MonoBehaviour
         Instantiate(_playerProjectile,_firepointTransform.position,_firepointTransform.rotation);
         yield return new WaitForSeconds(1.2f);
         _delay = false;
+    }
+
+    void SetFocus(Interactable newFocus) {
+        focus = newFocus;
     }
 }
