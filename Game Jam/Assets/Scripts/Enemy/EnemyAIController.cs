@@ -107,6 +107,9 @@ public class EnemyAIController : MonoBehaviour
         //distance is less than two meters, stop and attack
         if(enemy == Enemy.Melee){
             if(_distance < 5f){
+                _animator.SetBool("Idle",true);
+                _animator.SetBool("Walk",false);
+            
                 LookAtPlayer();
             }
             if(_distance < 4.2f || _enemyDead){
@@ -121,6 +124,8 @@ public class EnemyAIController : MonoBehaviour
             if(_distance > 4f){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
+                _animator.SetBool("Idle",false);
+                _animator.SetBool("Walk",true);
             }
         }
 
@@ -138,7 +143,8 @@ public class EnemyAIController : MonoBehaviour
             else{
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
-                _animator.SetBool("Attack",false);
+                _animator.SetBool("Idle",false);
+                _animator.SetBool("Walk",true);
             }
         }
 
@@ -228,6 +234,8 @@ public class EnemyAIController : MonoBehaviour
     IEnumerator MeleeAttack(){
         _delay = true;
         agent.isStopped = true;
+        _animator.SetBool("Walk",false);
+        _animator.SetBool("Idle",false);
         _animator.SetBool("Attack",true);
         yield return new WaitForSeconds(0.3f);
 
@@ -237,6 +245,7 @@ public class EnemyAIController : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         _animator.SetBool("Attack",false);
+        _animator.SetBool("Idle",true);
         yield return new WaitForSeconds(1f);
         _delay = false;
     }
