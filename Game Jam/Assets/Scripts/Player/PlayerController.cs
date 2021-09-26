@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
             _playerRightAnimator.Play("Attack");
+            //ian work in progress rn it work fine tho
+            //if player presses mouse button again within timeframe of first animation,
+            //play second attack animation
+            //else play first then go back to idle
             //_playerRightAnimator.SetInteger("attackindex",1);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
