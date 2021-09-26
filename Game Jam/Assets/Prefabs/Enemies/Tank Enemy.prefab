@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 7131340114679329123}
   - component: {fileID: 9198927075149383170}
   - component: {fileID: 5610014842816982197}
+  - component: {fileID: 86028361011258057}
+  - component: {fileID: 230651810}
   m_Layer: 0
   m_Name: Tank Enemy
   m_TagString: Enemy
@@ -169,10 +171,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.86011165
+  m_Height: 2.26
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.15}
 --- !u!114 &7131340114679329123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +254,36 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &86028361011258057
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609730828544111261}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!136 &230651810
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609730828544111261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.44
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85, z: 0.57}
 --- !u!1 &6722648650953629252
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2837831428607256842
 Transform:
   m_ObjectHideFlags: 0
