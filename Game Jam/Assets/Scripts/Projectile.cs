@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
 
     void Start(){
         Destroy(this.gameObject, 15f);
+        transform.LookAt(new Vector3(_player.transform.position.x, _player.transform.position.y +1,_player.transform.position.z));
     }
     // Start is called before the first frame update
     void Update()

@@ -296,7 +296,11 @@ public class EnemyAIController : MonoBehaviour
         _delay = true;
         yield return new WaitForSeconds(Random.Range(4f,6f));
         if(_enemyDead == false){
+            _animator.SetBool("Attack",true);
             if(_projectileGravityPrefab != null){ //check if the prefab is assigned so no errors are returned
+                yield return new WaitForSeconds(0.1f);
+                _animator.SetBool("Attack",false);
+                yield return new WaitForSeconds(0.9f);
                 Instantiate(_projectileGravityPrefab,_shotpoint.transform.position,Quaternion.identity);
             }
             yield return new WaitForSeconds(Random.Range(3f,5f));
