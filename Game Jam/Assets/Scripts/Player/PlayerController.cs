@@ -6,10 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     Camera cam;
     [SerializeField] Animator _playerRightAnimator;
-    [SerializeField] Animator _playerLeftAnimator; 
+    [SerializeField] Animator _playerLeftAnimator;
     [SerializeField] GameObject _playerProjectile;
     [SerializeField] Transform _firepointTransform;
     [SerializeField] bool _delay = false;
+
     void Start() {
         cam = Camera.main;
     }
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
                 _playerLeftAnimator.Play("Magic Attack");
                 StartCoroutine(Projectile());
             }
+
             //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             //RaycastHit hit;
             //if(Physics.Raycast(ray, out hit)) {
