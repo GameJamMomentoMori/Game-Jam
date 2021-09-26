@@ -9,6 +9,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] GameObject _particleCollide;
     [SerializeField] bool _fire;
     [SerializeField] Transform _firepointTransform;
+    [SerializeField] GameObject _growParticle;
     GameObject _player;
     CharStat charstat;
     
@@ -20,6 +21,7 @@ public class PlayerProjectile : MonoBehaviour
 
     void Start(){
         Destroy(this.gameObject, 15f);
+        //Instantiate(_growParticle,transform.position,Quaternion.identity);
         StartCoroutine(Fire());
     }
     // Start is called before the first frame update
@@ -34,14 +36,13 @@ public class PlayerProjectile : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-         if(other.tag != "Player"){
-            if(other.tag == "Enemy"){
-                //charstat.TakeDmg(5);
-                //CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
-            }
-            Instantiate(_particleCollide,transform.position,Quaternion.identity);
-            Destroy(this.gameObject);
+        if(other.tag == "Enemy"){
+            //other.GetComponent<whatever>
+            //do enemy damage here
         }
+        Instantiate(_particleCollide,transform.position,Quaternion.identity);
+        Destroy(this.gameObject);
+        
     }
 
     IEnumerator Fire(){
