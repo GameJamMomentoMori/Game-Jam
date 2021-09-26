@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Interactable focus;
     CharStat myStats;
     EnemyHealthController enemyStats;
+    CharacterCombat charAtk;
 
     void Start() {
         cam = Camera.main;
@@ -36,12 +37,11 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
+                //hit.collider.enabled = false;
                 if(interactable != null) {
-                    
-                    //SetFocus(interactable);
-                    //Debug.Log(transform.name + " hit");
+                    //enemyStats = enemy.GetComponent<CharStat>();
+                    charAtk.Attack(enemyStats);
                 }
-                //enemyStats.TakeDmg(myStats.dmg.getVal());                
             }
         }
 
@@ -60,9 +60,5 @@ public class PlayerController : MonoBehaviour
         Instantiate(_playerProjectile,_firepointTransform.position,_firepointTransform.rotation);
         yield return new WaitForSeconds(1.2f);
         _delay = false;
-    }
-
-    void SetFocus(Interactable newFocus) {
-        focus = newFocus;
     }
 }
