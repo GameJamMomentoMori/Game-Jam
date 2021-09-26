@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
 
+
 public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] float _projectileSpeed;
@@ -11,7 +12,9 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] Transform _firepointTransform;
     [SerializeField] GameObject _growParticle;
     GameObject _player;
-    CharStat charstat;
+    GameObject enemy;
+    CharStat charstat, enemyStats;
+    CharacterCombat charAtk;
     
     void Awake(){
         _player = GameObject.Find("FirstPersonPlayer");
@@ -38,7 +41,9 @@ public class PlayerProjectile : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.tag == "Enemy"){
             //other.GetComponent<whatever>
+            enemyStats = enemy.GetComponent<CharStat>();
             //do enemy damage here
+            charAtk.Attack(enemyStats);
         }
         Instantiate(_particleCollide,transform.position,Quaternion.identity);
         Destroy(this.gameObject);
