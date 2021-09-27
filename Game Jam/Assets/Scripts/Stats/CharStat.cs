@@ -10,9 +10,14 @@ public class CharStat : MonoBehaviour
     public Stat armor;
     public HUDHealth HPBar;
 
-    void Awake() {
-        currHP = maxHP;
+    void Start()
+    {
         HPBar.SetMaxHealth(maxHP);
+    }
+
+    void Awake()
+    {
+        currHP = maxHP;
     }
 
     public void TakeDmg(int dmg) {
