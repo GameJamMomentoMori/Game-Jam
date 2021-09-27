@@ -131,6 +131,8 @@ public class EnemyAIController : MonoBehaviour
 
          if(enemy == Enemy.Tank){
             if(_distance < 7f || _enemyDead){
+                _animator.SetBool("Idle",true);
+                _animator.SetBool("Walk",false);
                 LookAtPlayer();
                 agent.isStopped = true;
                 if(_enemyDead == false){
@@ -154,6 +156,8 @@ public class EnemyAIController : MonoBehaviour
             if(_distance > 17f && !_enemyDead){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
+                _animator.SetBool("Idle",false);
+                _animator.SetBool("Walk",true);
             }
         }
         
@@ -173,6 +177,8 @@ public class EnemyAIController : MonoBehaviour
         //if enemy alive and distance between 17-25m, stop and shoot
         if((_distance >= 17f && _distance <= 25f) && !_enemyDead){
             agent.isStopped = true;
+            _animator.SetBool("Idle",true);
+            _animator.SetBool("Walk",false);
             LookAtPlayer();
             if(!_delay){
                 StartCoroutine(RangedAttack());
@@ -188,6 +194,8 @@ public class EnemyAIController : MonoBehaviour
         //if enemy is less than 17 meters, run away from player
         else if(_distance < 17f ){
             agent.isStopped = false;
+            _animator.SetBool("Idle",false);
+            _animator.SetBool("Walk",true);
             Vector3 directionToPlayer = transform.position - _player.transform.position;
             Vector3 runAwayPos = transform.position + directionToPlayer;
             agent.SetDestination(runAwayPos);
@@ -257,18 +265,21 @@ public class EnemyAIController : MonoBehaviour
     IEnumerator TankAttack(){
         _delay = true;
         agent.isStopped = true;
+        _animator.SetBool("Walk",false);
+        _animator.SetBool("Idle",false);
         _animator.SetBool("Attack",true);
         yield return new WaitForSeconds(1f);
-        
         if(_range){
             charstat.TakeDmg(20);
             CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
         }
         //if(_distance > 7f){
+        _animator.SetBool("Walk",false);
+        _animator.SetBool("Idle",true);
         _animator.SetBool("Attack",false);
             //_animator.Play("Idle");
        // }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         agent.isStopped = false;
         yield return new WaitForSeconds(0.5f);
         _delay = false;
@@ -285,6 +296,8 @@ public class EnemyAIController : MonoBehaviour
         //_animator.SetBool("Attack",true);
         if(_enemyDead == false){
             if(_projectilePrefab != null){ //check if the prefab is assigned so no errors are returned
+                _animator.SetBool("Idle",false);
+                _animator.SetBool("Walk",false);
                 _animator.SetBool("Attack",true);
                // _animator.Play("Attack");
                 yield return new WaitForSeconds(1f);
@@ -292,6 +305,7 @@ public class EnemyAIController : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
             _animator.SetBool("Attack",false);
+            _animator.SetBool("Idle",true);
             yield return new WaitForSeconds(Random.Range(3f,6f));
             _delay = false;
         }
