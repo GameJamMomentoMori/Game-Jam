@@ -9,11 +9,15 @@ public class EnemyHealthController : CharStat
 
     void Start() {
         enemyManager = EnemyManager.instance;
-        myStats = GetComponent<CharStat>();
+        myStats = gameObject.GetComponent<CharStat>();
     }
 
     public override void Die() {
         base.Die();
         enemyManager.KillEnemy();
+    }
+
+    public void TakeDamage(){
+        Debug.Log("took " + dmg.getVal() + " damage");
     }
 }

@@ -13,12 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool _delay = false;
     public Interactable focus;
     CharStat myStats;
-    EnemyHealthController enemyStats;
-    CharacterCombat charAtk;
+    [SerializeField] EnemyHealthController enemyStats;
+    [SerializeField] CharacterCombat charAtk;
 
     void Start() {
         cam = Camera.main;
         myStats = GetComponent<CharStat>();
+        charAtk = this.GetComponent<CharacterCombat>();
     }
 
     // Update is called once per frame
@@ -43,8 +44,12 @@ public class PlayerController : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 //hit.collider.enabled = false;
                 if(interactable != null) {
-                    //enemyStats = enemy.GetComponent<CharStat>();
-                    charAtk.Attack(enemyStats);
+                    if(interactable.hasInteracted== false)
+                    interactable.Interact();
+                    else
+                    Debug.Log("cant interact yet");
+                    ////enemyStats = enemy.GetComponent<CharStat>();
+                    ////charAtk.Attack(enemyStats);
                 }
             }
         }

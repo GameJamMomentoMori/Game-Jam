@@ -47,10 +47,11 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.tag == "Enemy"){
-            //other.GetComponent<whatever>
+           // other.GetComponent<whatever>
             //enemyStats = enemy.GetComponent<CharStat>();
             //do enemy damage here
             //charAtk.Attack(enemyStats);
+            other.GetComponent<EnemyHealthController>().TakeDamage();
         }
         Instantiate(_particleCollide,transform.position,Quaternion.identity);
         Destroy(this.gameObject);
