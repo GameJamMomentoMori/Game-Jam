@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6108509432568506538}
   - component: {fileID: 8295982078589049952}
   - component: {fileID: 7268996847822962918}
+  - component: {fileID: -5833166407928961027}
   m_Layer: 6
   m_Name: Grave2
   m_TagString: Untagged
@@ -96,3 +97,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6409091084586809520, guid: 5355656d59bb16a4eb81baab6d1a747a, type: 3}
+--- !u!54 &-5833166407928961027
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503493748804894133}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
