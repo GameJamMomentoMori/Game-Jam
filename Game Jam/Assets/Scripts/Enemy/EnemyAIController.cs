@@ -187,7 +187,8 @@ public class EnemyAIController : MonoBehaviour
             agent.isStopped = true;
             _animator.SetBool("Idle",true);
             _animator.SetBool("Walk",false);
-            LookAtPlayer();
+            if(!_enemyDead)
+                LookAtPlayer();
             if(!_delay){
                 StartCoroutine(RangedAttack());
                 
@@ -232,9 +233,11 @@ public class EnemyAIController : MonoBehaviour
     //#/ It is also called every frame for flying enemies 
     //// 
     private void LookAtPlayer(){
+        if(_enemyDead == false){
         Vector3 direction = _player.transform.position - transform.position;
         direction.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), _lookSpeed * Time.deltaTime);
+        }
     }
 
     ////
@@ -360,8 +363,11 @@ public class EnemyAIController : MonoBehaviour
     }
     
     public void Death(){
-        _animator.SetBool("Death",true);
         agent.updatePosition = false;
+        _enemyDead = true;
+        _animator.SetBool("Death",true);
+        
+        agent.isStopped = true;
     }
     
     public IEnumerator TakeDamage(){
