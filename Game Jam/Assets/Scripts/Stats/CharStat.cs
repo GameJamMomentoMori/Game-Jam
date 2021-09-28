@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class CharStat : MonoBehaviour
 {
     public int maxHP = 100;
