@@ -1092,6 +1092,8 @@ MonoBehaviour:
   armor:
     baseVal: 0
   HPBar: {fileID: 0}
+  _blood: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &6300306051237548812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1350,9 @@ MonoBehaviour:
   armor:
     baseVal: 0
   HPBar: {fileID: 0}
+  _blood: {fileID: 0}
+  isPlayer: 1
+  _blood: {fileID: 0}
 --- !u!114 &888626028
 MonoBehaviour:
   m_ObjectHideFlags: 0

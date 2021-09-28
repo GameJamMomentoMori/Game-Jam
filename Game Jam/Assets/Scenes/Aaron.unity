@@ -1109,11 +1109,11 @@ MonoBehaviour:
   - name: Aarons Test Wave
     enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
     - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    Enemies: 02000000010000000100000003000000
-    rate: 0.5
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    Enemies: 05000000030000000300000003000000
+    rate: 0.2
   - name: Ians Test Wave
     enemy: []
     Enemies: 
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   - {fileID: 748630811}
   - {fileID: 1768345951}
   - {fileID: 730862322}
-  timeBetweenWaves: 10
+  timeBetweenWaves: 2
   waveCountdown: 0
 --- !u!4 &2130858636
 Transform:

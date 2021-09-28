@@ -359,6 +359,11 @@ public class EnemyAIController : MonoBehaviour
         StartCoroutine(TakeDamage());
     }
     
+    public void Death(){
+        _animator.SetBool("Death",true);
+        agent.updatePosition = false;
+    }
+    
     public IEnumerator TakeDamage(){
         takingdamage = true;
         //yield return new WaitForSeconds(0.1f);

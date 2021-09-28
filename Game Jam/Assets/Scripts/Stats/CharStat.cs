@@ -9,11 +9,14 @@ public class CharStat : MonoBehaviour
     public Stat dmg;
     public Stat armor;
     public HUDHealth HPBar;
-
+    public Animator _blood;
+    public bool isPlayer;
+    
     void Start()
     {
         //HPBar = GameObject.Find("HealthBar");
         HPBar.SetMaxHealth(maxHP);
+        _blood = GameObject.Find("Blood").GetComponent<Animator>();
     }
 
     void Awake()
@@ -25,7 +28,9 @@ public class CharStat : MonoBehaviour
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
-        
+        if(isPlayer)
+            BloodAnimation();
+    
         HPBar.SetHealth(currHP);
 
         Debug.Log(transform.name + " takes " + dmg + " damage");
@@ -39,5 +44,9 @@ public class CharStat : MonoBehaviour
         //Die in some way
         //This method is meant to be overwritten
         Debug.Log(transform.name + " died");
+    }
+
+     public void BloodAnimation(){
+        _blood.Play("Blood");
     }
 }
