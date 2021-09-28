@@ -53,6 +53,13 @@ public class PlayerProjectile : MonoBehaviour
             //enemyStats = enemy.GetComponent<CharStat>();
             //do enemy damage here
             //charAtk.Attack(enemyStats);
+            Interactable interactable = other.GetComponent<Collider>().GetComponent<Interactable>();
+            if(interactable != null) {
+                    if(interactable.hasInteracted== false) {
+                        interactable.isRanged = true;
+                    interactable.Interact();
+                    }
+            }
             other.GetComponent<EnemyHealthController>().TakeDamage();
             enemyAI = other.GetComponent<EnemyAIController>();
             

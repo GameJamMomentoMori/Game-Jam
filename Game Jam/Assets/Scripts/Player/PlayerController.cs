@@ -42,14 +42,9 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                //hit.collider.enabled = false;
                 if(interactable != null) {
                     if(interactable.hasInteracted== false)
                     interactable.Interact();
-                    //else
-                    //Debug.Log("cant interact yet");
-                    ////enemyStats = enemy.GetComponent<CharStat>();
-                    ////charAtk.Attack(enemyStats);
                 }
             }
         }

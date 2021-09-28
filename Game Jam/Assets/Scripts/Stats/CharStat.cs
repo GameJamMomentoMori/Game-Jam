@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharStat : MonoBehaviour
 {
     public int maxHP = 100;
-    public int currHP; //{get; private set;}
+    public int currHP {get; private set;}
     public int maxSP = 25; //for magic consumption
     public Stat dmg;
     public Stat armor;
@@ -21,7 +21,7 @@ public class CharStat : MonoBehaviour
     }
 
     public void TakeDmg(int dmg) {
-        //dmg -= armor.getVal();
+        dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
         

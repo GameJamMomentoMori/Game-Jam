@@ -7,15 +7,25 @@ public class Interactable : MonoBehaviour
     public float radius = 6f;
     Transform player;
     public bool hasInteracted = false;
+    public bool isRanged = false;
     public Transform interactionTransform;
     float distance;
     EnemyAIController enemyAI;
+    CharStat enemyStats;
+    PlayerStats playerStats;
 
     public virtual void Interact() {
         //This method is meant to be overwritten
         if (distance <= radius) {
             Debug.Log("Interacting with " + transform.name);
             enemyAI.enemyDamaged();
+            if (isRanged) {
+                enemyStats.TakeDmg(playerStats.dmg.getVal() / 2);
+                Debug.Log(transform.name + " took " + (playerStats.dmg.getVal()/2) + " damage!");
+            } else {
+                enemyStats.TakeDmg(playerStats.dmg.getVal());
+                Debug.Log(transform.name + " took " + playerStats.dmg.getVal() + " damage!");
+            }
             StartCoroutine(InteractTimer());
         }
     }
@@ -24,6 +34,8 @@ public class Interactable : MonoBehaviour
         GameObject playerObj = GameObject.Find("FirstPersonPlayer");
         player = playerObj.GetComponent<Transform>();
         enemyAI = gameObject.GetComponent<EnemyAIController>();
+        enemyStats = gameObject.GetComponent<CharStat>();
+        playerStats = playerObj.GetComponent<PlayerStats>();
         interactionTransform = this.transform;
     }
 
