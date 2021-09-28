@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 1a921eec433ec6b439f131bd05ca7e6e
   - enabled: 1
-    path: Assets/Scenes/Carson.unity
-    guid: 203f81add07130848bdbfd77e322b31f
+    path: Assets/Scenes/Arena.unity
+    guid: 5686c86af5243b54a911f1a51c8f39c2
   m_configObjects: {}
