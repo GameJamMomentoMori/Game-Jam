@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other){
          if(other.tag != "Enemy"){
             if(other.tag == "Player"){
-                charstat.TakeDmg(5);
+                charstat.TakeDmg(20);
                 CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
             }
             Instantiate(_particleCollide,transform.position,Quaternion.identity);

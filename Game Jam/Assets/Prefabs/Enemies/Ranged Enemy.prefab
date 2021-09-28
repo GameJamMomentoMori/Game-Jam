@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 4714368663310858302}
   - component: {fileID: -5768131821425036314}
   - component: {fileID: 2417362482389671697}
+  - component: {fileID: 713009294651207335}
   m_Layer: 0
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -607,6 +608,24 @@ MonoBehaviour:
   armor:
     baseVal: 0
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
+  _blood: {fileID: 0}
+  isPlayer: 0
+--- !u!114 &713009294651207335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420450425489510983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69ed7a785e5c024b9afbbbc08b11e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 6
+  hasInteracted: 0
+  isRanged: 0
+  interactionTransform: {fileID: 0}
 --- !u!95 &5381928882961021112
 Animator:
   serializedVersion: 3
