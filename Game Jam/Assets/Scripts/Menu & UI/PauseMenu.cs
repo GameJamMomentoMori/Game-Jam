@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GamePaused = false;
-
+    public AudioSource press;
+    public AudioSource hover;
     public GameObject pauseMenu;
     public GameObject optionsMenu;
     public Object menu;
@@ -32,6 +33,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        press.Play();
         pauseMenu.SetActive(false);
          AudioListener.pause = false;
         optionsMenu.SetActive(false);
@@ -51,12 +53,14 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        press.Play();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
     public void QuitGame()
     {
+        press.Play();
         Debug.Log("Quitting Game");
         Application.Quit();
     }
