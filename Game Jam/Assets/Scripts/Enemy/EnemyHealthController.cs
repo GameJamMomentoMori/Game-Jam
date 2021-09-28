@@ -17,7 +17,7 @@ public class EnemyHealthController : CharStat
         enemyManager.KillEnemy();
     }
 
-    public void TakeDamage(){
-        Debug.Log("took " + dmg.getVal() + " damage");
-    }
+//     public void TakeDamage(){
+//         Debug.Log("took " + dmg.getVal() + " damage");
+//     }
 }
