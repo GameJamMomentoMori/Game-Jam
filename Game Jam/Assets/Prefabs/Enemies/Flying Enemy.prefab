@@ -260,7 +260,7 @@ MonoBehaviour:
     baseVal: 0
   armor:
     baseVal: 0
-  HPBar: {fileID: 0}
+  HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
 --- !u!114 &-4077440963645520640
 MonoBehaviour:
   m_ObjectHideFlags: 0

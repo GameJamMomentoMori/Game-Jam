@@ -1071,7 +1071,8 @@ PrefabInstance:
       propertyPath: armor.baseVal
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3211527798581539540, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
 --- !u!1001 &1369453268
 PrefabInstance:

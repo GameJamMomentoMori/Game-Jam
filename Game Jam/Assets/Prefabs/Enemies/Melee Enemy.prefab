@@ -205,7 +205,7 @@ MonoBehaviour:
   dmg:
     baseVal: 0
   armor:
-    baseVal: 0
+    baseVal: 2
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
 --- !u!54 &3892900840805169683
 Rigidbody:
