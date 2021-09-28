@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8363016566998193393}
   - component: {fileID: 3892900840805169683}
   - component: {fileID: 3971256367614285640}
-  - component: {fileID: 3211527798581539540}
+  - component: {fileID: 2009562317}
   m_Layer: 0
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -205,7 +205,7 @@ MonoBehaviour:
   dmg:
     baseVal: 0
   armor:
-    baseVal: 2
+    baseVal: 0
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
 --- !u!54 &3892900840805169683
 Rigidbody:
@@ -239,7 +239,7 @@ MonoBehaviour:
   hasInteracted: 0
   isRanged: 0
   interactionTransform: {fileID: 8259582781299135539}
---- !u!114 &3211527798581539540
+--- !u!114 &2009562317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
