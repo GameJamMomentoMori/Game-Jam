@@ -19,6 +19,14 @@ public class EnemyAIController : MonoBehaviour
     [SerializeField] LayerMask L_Player;
     [SerializeField] Transform _attackTransform;
     
+    [Header("Audio")]
+    public AudioSource skeletondeath;
+    public AudioSource gargoyledeath;
+    public AudioSource witchdeath;
+    public AudioSource snakedeath;
+    public AudioSource witchFire;
+    public AudioSource acidSpit;
+
     [Header("State")]
     [SerializeField] bool _enemyDead;
 
@@ -330,6 +338,7 @@ public class EnemyAIController : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 if(!_enemyDead)
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
+                witchFire.Play();
             }
             yield return new WaitForSeconds(0.1f);
             _animator.SetBool("Attack",false);
@@ -356,6 +365,7 @@ public class EnemyAIController : MonoBehaviour
                 yield return new WaitForSeconds(0.9f);
                 if(!takingdamage){
                 Instantiate(_projectileGravityPrefab,_shotpoint.transform.position,Quaternion.identity);
+                acidSpit.Play();
                 }
             }
             yield return new WaitForSeconds(Random.Range(3f,5f));
@@ -373,6 +383,18 @@ public class EnemyAIController : MonoBehaviour
         _enemyDead = true;
         agent.enabled = false;
         _animator.SetBool("Death",true);
+        if(currentEnemy == Enemy.Melee){
+            skeletondeath.Play();
+        }
+        if(currentEnemy == Enemy.Ranged){
+            witchdeath.Play();
+        }
+         if(currentEnemy == Enemy.Tank){
+            gargoyledeath.Play();
+        }
+        if(currentEnemy == Enemy.Flying){
+            snakedeath.Play();
+        }
         agent.isStopped = true;
         StartCoroutine(OnDeath());
     }

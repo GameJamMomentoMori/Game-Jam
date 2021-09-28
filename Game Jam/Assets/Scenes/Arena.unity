@@ -17656,6 +17656,11 @@ PrefabInstance:
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 31895184}
+    - target: {fileID: 3179347129807787084, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_Value
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 3868718002614640632, guid: 5546704e0a6c8a6428f38954ba3b0007,
         type: 3}
       propertyPath: m_Name
@@ -26774,11 +26779,6 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1019004427}
-    - target: {fileID: 1716447866701671876, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6300306051578700571, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: m_RootOrder
@@ -28953,7 +28953,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263320
+  m_Name: pb_Mesh586210
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
