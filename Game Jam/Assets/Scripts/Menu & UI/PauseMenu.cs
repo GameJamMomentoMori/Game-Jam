@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionsMenu;
     public Object menu;
+    public AudioMixer audiomixer;
+    public Slider slider;
 
     // Update is called once per frame
     void Update()
@@ -54,5 +58,9 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quitting Game");
         Application.Quit();
+    }
+
+    public void SliderSet(float sliderVal){
+        audiomixer.SetFloat("MusicVol", Mathf.Log10(sliderVal)*20);
     }
 }
