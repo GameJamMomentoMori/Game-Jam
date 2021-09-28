@@ -64,7 +64,7 @@ public class Interactable : MonoBehaviour
 
     IEnumerator InteractTimer(){
         hasInteracted= true;
-        yield return new WaitForSeconds(0.86f);
+        yield return new WaitForSeconds(0.7435898f);
         hasInteracted = false;
     }
 }
