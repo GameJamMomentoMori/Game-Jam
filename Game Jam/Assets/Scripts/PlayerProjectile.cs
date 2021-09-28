@@ -60,14 +60,14 @@ public class PlayerProjectile : MonoBehaviour
                         interactable.Interact();
                     }
             }
-            other.GetComponent<EnemyHealthController>().TakeDamage();
-            enemyAI = other.GetComponent<EnemyAIController>();
+            //other.GetComponent<EnemyHealthController>().TakeDamage();
+            //enemyAI = other.GetComponent<EnemyAIController>();
             
         }
         Instantiate(_particleCollide,transform.position,Quaternion.identity);
         Destroy(this.gameObject);
         //StartCoroutine(enemyAI.TakeDamage());
-        enemyAI.enemyDamaged();
+        //enemyAI.enemyDamaged();
     }
 
     IEnumerator Fire(){
