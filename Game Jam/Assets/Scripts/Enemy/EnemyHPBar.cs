@@ -15,6 +15,7 @@ public class EnemyHPBar : MonoBehaviour
     {
         enemyStats = enemy.GetComponent<CharStat>();
         slider.value = enemyStats.currHP;
+        slider.maxValue = enemyStats.maxHP;
     }
 
     // Update is called once per frame
