@@ -28,7 +28,6 @@ public class Interactable : MonoBehaviour
             if (distance <= radius) {
                 Debug.Log("Interacting with " + transform.name);
                 enemyAI.enemyDamaged();
-            
                 enemyStats.TakeDmg(playerStats.dmg.getVal());
                 Debug.Log(transform.name + " took " + playerStats.dmg.getVal() + " damage!");
                 
