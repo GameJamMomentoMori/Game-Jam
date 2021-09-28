@@ -15,14 +15,15 @@ public class EnemyHPBar : MonoBehaviour
     {
         enemyStats = enemy.GetComponent<CharStat>();
         slider.value = enemyStats.currHP;
+        slider.maxValue = enemyStats.maxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemyStats.currHP == 0) return;
-
         slider.value = enemyStats.currHP;
+
+        if(enemyStats.currHP == 0) return;
 
         if(enemyStats.currHP < enemyStats.maxHP) healthBarUI.SetActive(true);
     }

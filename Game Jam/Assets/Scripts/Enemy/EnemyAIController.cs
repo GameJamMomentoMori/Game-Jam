@@ -365,6 +365,7 @@ public class EnemyAIController : MonoBehaviour
     public void Death(){
         agent.updatePosition = false;
         _enemyDead = true;
+        agent.enabled = false;
         _animator.SetBool("Death",true);
         
         agent.isStopped = true;
