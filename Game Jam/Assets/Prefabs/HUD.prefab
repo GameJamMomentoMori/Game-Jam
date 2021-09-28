@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5035908012753211244}
   - component: {fileID: 157892798404854323}
   - component: {fileID: 4404937974412937944}
+  - component: {fileID: 2648118150429513063}
   m_Layer: 5
   m_Name: Blood
   m_TagString: Untagged
@@ -252,6 +253,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2648118150429513063
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791237222332616812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de6e3c27a9ba6714aac2e07c6f44ecbd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7113625240373232709
 PrefabInstance:
   m_ObjectHideFlags: 0

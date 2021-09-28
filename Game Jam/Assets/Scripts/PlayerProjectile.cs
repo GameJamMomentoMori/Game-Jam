@@ -57,7 +57,7 @@ public class PlayerProjectile : MonoBehaviour
             if(interactable != null) {
                     if(interactable.hasInteracted== false) {
                         interactable.isRanged = true;
-                    interactable.Interact();
+                        interactable.Interact();
                     }
             }
             other.GetComponent<EnemyHealthController>().TakeDamage();
