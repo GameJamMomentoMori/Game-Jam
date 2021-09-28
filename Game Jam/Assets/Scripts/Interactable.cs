@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     public bool hasInteracted = false;
     public bool isRanged = false;
     public Transform interactionTransform;
-    float distance;
+    public float distance;
     EnemyAIController enemyAI;
     CharStat enemyStats;
     PlayerStats playerStats;

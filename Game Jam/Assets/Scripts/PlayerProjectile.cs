@@ -17,6 +17,7 @@ public class PlayerProjectile : MonoBehaviour
     GameObject enemy;
     CharStat charstat, enemyStats;
     CharacterCombat charAtk;
+    public AudioSource explosion;
 
     EnemyAIController enemyAI;
     

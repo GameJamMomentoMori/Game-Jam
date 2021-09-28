@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _playerProjectile;
     [SerializeField] Transform _firepointTransform;
     [SerializeField] bool _delay = false;
+    [SerializeField] bool _delay2 = false;
     public Interactable focus;
     CharStat myStats;
     [SerializeField] EnemyHealthController enemyStats;
     [SerializeField] CharacterCombat charAtk;
     
     public AudioSource slash;
-    public AudioSource fire; 
+    public AudioSource fire;
+    public AudioSource woosh; 
     void Start() {
         cam = Camera.main;
         myStats = GetComponent<CharStat>();
@@ -32,12 +34,8 @@ public class PlayerController : MonoBehaviour
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
             _playerRightAnimator.Play("Attack");
-            //Debug.Log(_playerRightAnimator.GetCurrentAnimatorStateInfo(0).length);
-            //ian work in progress rn it work fine tho
-            //if player presses mouse button again within timeframe of first animation,
-            //play second attack animation
-            //else play first then go back to idle
-            //_playerRightAnimator.SetInteger("attackindex",1);
+            if(!_delay2)
+                StartCoroutine(SoundDelay());
            
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -46,9 +44,13 @@ public class PlayerController : MonoBehaviour
             if(Physics.Raycast(ray, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
-                    slash.Play();
-                    if(interactable.hasInteracted== false)
+                    
+                    if(interactable.hasInteracted== false){
                     interactable.Interact();
+                        if (interactable.distance <= interactable.radius) {
+                        slash.Play();
+                        }
+                    }
                 }
             }
         }
@@ -69,5 +71,12 @@ public class PlayerController : MonoBehaviour
         Instantiate(_playerProjectile,_firepointTransform.position,_firepointTransform.rotation);
         yield return new WaitForSeconds(1.2f);
         _delay = false;
+    }
+
+    IEnumerator SoundDelay(){
+        _delay2 = true;
+        woosh.Play();
+        yield return new WaitForSeconds(0.7435898f);
+        _delay2 = false;
     }
 }
