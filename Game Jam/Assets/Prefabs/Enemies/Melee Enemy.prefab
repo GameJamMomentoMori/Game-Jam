@@ -144,6 +144,7 @@ MonoBehaviour:
   _distance: 0
   _radius: 0
   _range: 0
+  takingdamage: 0
   L_Player:
     serializedVersion: 2
     m_Bits: 8
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69ed7a785e5c024b9afbbbc08b11e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3.2
+  radius: 6
   hasInteracted: 0
   interactionTransform: {fileID: 8259582781299135539}
 --- !u!95 &1239359980

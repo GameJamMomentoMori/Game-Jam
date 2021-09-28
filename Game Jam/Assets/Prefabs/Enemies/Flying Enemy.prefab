@@ -65,6 +65,8 @@ GameObject:
   - component: {fileID: 4191488715002885468}
   - component: {fileID: 1842885693445314229}
   - component: {fileID: 2743228862045951059}
+  - component: {fileID: 1047659669651442747}
+  - component: {fileID: 7881440769816807750}
   m_Layer: 7
   m_Name: Flying Enemy
   m_TagString: Enemy
@@ -120,6 +122,7 @@ MonoBehaviour:
   _distance: 0
   _radius: 6.63
   _range: 0
+  takingdamage: 0
   L_Player:
     serializedVersion: 2
     m_Bits: 0
@@ -204,8 +207,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.21
+  m_Height: 0.67
   m_Direction: 1
   m_Center: {x: 0, y: 0.63, z: 0}
 --- !u!136 &2743228862045951059
@@ -222,6 +225,41 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.41, z: -1.11}
+--- !u!114 &1047659669651442747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191000265472093773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69ed7a785e5c024b9afbbbc08b11e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 6
+  hasInteracted: 0
+  interactionTransform: {fileID: 9023467869315761069}
+--- !u!114 &7881440769816807750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191000265472093773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35657798d80cae64c8d3e213f263c6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currHP: 0
+  maxSP: 25
+  dmg:
+    baseVal: 0
+  armor:
+    baseVal: 0
+  HPBar: {fileID: 0}
 --- !u!1001 &5543985456085170874
 PrefabInstance:
   m_ObjectHideFlags: 0

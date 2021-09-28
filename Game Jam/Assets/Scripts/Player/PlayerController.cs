@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
                 if(interactable != null) {
                     if(interactable.hasInteracted== false)
                     interactable.Interact();
-                    else
-                    Debug.Log("cant interact yet");
+                    //else
+                    //Debug.Log("cant interact yet");
                     ////enemyStats = enemy.GetComponent<CharStat>();
                     ////charAtk.Attack(enemyStats);
                 }

@@ -17,6 +17,8 @@ public class PlayerProjectile : MonoBehaviour
     GameObject enemy;
     CharStat charstat, enemyStats;
     CharacterCombat charAtk;
+
+    EnemyAIController enemyAI;
     
     void Awake(){
         cam = Camera.main;
@@ -52,10 +54,13 @@ public class PlayerProjectile : MonoBehaviour
             //do enemy damage here
             //charAtk.Attack(enemyStats);
             other.GetComponent<EnemyHealthController>().TakeDamage();
+            enemyAI = other.GetComponent<EnemyAIController>();
+            
         }
         Instantiate(_particleCollide,transform.position,Quaternion.identity);
         Destroy(this.gameObject);
-        
+        //StartCoroutine(enemyAI.TakeDamage());
+        enemyAI.enemyDamaged();
     }
 
     IEnumerator Fire(){

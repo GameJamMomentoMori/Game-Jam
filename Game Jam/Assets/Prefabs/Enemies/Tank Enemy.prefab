@@ -88,13 +88,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6282504183450853245}
-  - component: {fileID: 3357463769198857137}
   - component: {fileID: 6299459795026542204}
-  - component: {fileID: 7131340114679329123}
   - component: {fileID: 9198927075149383170}
   - component: {fileID: 5610014842816982197}
   - component: {fileID: 86028361011258057}
   - component: {fileID: 230651810}
+  - component: {fileID: 6169521193748516635}
+  - component: {fileID: 8484198017049230306}
   m_Layer: 0
   m_Name: Tank Enemy
   m_TagString: Enemy
@@ -120,47 +120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &3357463769198857137
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609730828544111261}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 457c0f373ed22904ca8c40f92b0484a7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6299459795026542204
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -175,25 +134,6 @@ CapsuleCollider:
   m_Height: 2.26
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.15}
---- !u!114 &7131340114679329123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609730828544111261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35657798d80cae64c8d3e213f263c6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 1000
-  maxSP: 0
-  dmg:
-    baseVal: 0
-  armor:
-    baseVal: 0
-  HPBar: {fileID: 0}
 --- !u!114 &9198927075149383170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +152,7 @@ MonoBehaviour:
   _distance: 0
   _radius: 6.5
   _range: 0
+  takingdamage: 0
   L_Player:
     serializedVersion: 2
     m_Bits: 8
@@ -284,6 +225,41 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0.57}
+--- !u!114 &6169521193748516635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609730828544111261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69ed7a785e5c024b9afbbbc08b11e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 6
+  hasInteracted: 0
+  interactionTransform: {fileID: 6282504183450853245}
+--- !u!114 &8484198017049230306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609730828544111261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35657798d80cae64c8d3e213f263c6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currHP: 0
+  maxSP: 25
+  dmg:
+    baseVal: 0
+  armor:
+    baseVal: 0
+  HPBar: {fileID: 0}
 --- !u!1 &6722648650953629252
 GameObject:
   m_ObjectHideFlags: 0

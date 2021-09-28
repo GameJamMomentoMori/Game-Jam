@@ -15,6 +15,7 @@ public class EnemyAIController : MonoBehaviour
     [SerializeField] float _distance;
     [SerializeField] float _radius;
     [SerializeField] bool _range = false;
+    [SerializeField] bool takingdamage = false;
     [SerializeField] LayerMask L_Player;
     [SerializeField] Transform _attackTransform;
     
@@ -107,21 +108,22 @@ public class EnemyAIController : MonoBehaviour
         //distance is less than two meters, stop and attack
         if(enemy == Enemy.Melee){
             if(_distance < 5f){
-                _animator.SetBool("Idle",true);
-                _animator.SetBool("Walk",false);
-            
+                if(takingdamage == false){
+                    _animator.SetBool("Idle",true);
+                    _animator.SetBool("Walk",false);
+                }
                 LookAtPlayer();
             }
             if(_distance < 4.2f || _enemyDead){
                 agent.isStopped = true;
                 //LookAtPlayer();
                 if(_enemyDead == false){
-                    if(_delay == false)
+                    if(_delay == false && takingdamage == false)
                     StartCoroutine(MeleeAttack());
                 }
             }
             //if enemy is not within 4 meters, navigate towards player
-            if(_distance > 4f){
+            if(_distance > 4f && !takingdamage){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
                 _animator.SetBool("Idle",false);
@@ -131,18 +133,22 @@ public class EnemyAIController : MonoBehaviour
 
          if(enemy == Enemy.Tank){
             if(_distance < 7f || _enemyDead){
-                _animator.SetBool("Idle",true);
-                _animator.SetBool("Walk",false);
+                if(!takingdamage){
+                    _animator.SetBool("Idle",true);
+                    _animator.SetBool("Walk",false);
+                }
                 LookAtPlayer();
                 agent.isStopped = true;
                 if(_enemyDead == false){
                      if(_delay == false){
-                        StartCoroutine(TankAttack());
+                          if(!takingdamage){
+                            StartCoroutine(TankAttack());
+                          }
                      }
                 }
             }
             //if player is not within 7 meters, navigate towards player
-            else{
+            else if(!takingdamage){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
                 _animator.SetBool("Idle",false);
@@ -154,10 +160,12 @@ public class EnemyAIController : MonoBehaviour
         //is greater than 17m, navigate towards the player 
         if(enemy == Enemy.Ranged){
             if(_distance > 17f && !_enemyDead){
+                if(!takingdamage){
                 agent.isStopped = false;
                 agent.SetDestination(_player.transform.position);
                 _animator.SetBool("Idle",false);
                 _animator.SetBool("Walk",true);
+                }
             }
         }
         
@@ -209,9 +217,12 @@ public class EnemyAIController : MonoBehaviour
     ////
     IEnumerator RandomFlyingPosition(){
         _random = true;
+        if(!takingdamage){
         agent.SetDestination(_flyEmpties[Random.Range(0,_flyEmpties.Length-1)].transform.position);
         yield return new WaitForSeconds(Random.Range(2f,4f));
+        
         StartCoroutine(FlyingAttack());
+        }
         _random = false;
     }
 
@@ -240,22 +251,24 @@ public class EnemyAIController : MonoBehaviour
     //#/ it does not do damage to the player if they can escape in time.
     //// 
     IEnumerator MeleeAttack(){
-        _delay = true;
-        agent.isStopped = true;
-        _animator.SetBool("Walk",false);
-        _animator.SetBool("Idle",false);
-        _animator.SetBool("Attack",true);
-        yield return new WaitForSeconds(0.3f);
+        if(takingdamage == false){
+            _delay = true;
+            agent.isStopped = true;
+            _animator.SetBool("Walk",false);
+            _animator.SetBool("Idle",false);
+            _animator.SetBool("Attack",true);
+            yield return new WaitForSeconds(0.4f);
 
-        if(_range){
-            charstat.TakeDmg(10);
-            CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+            if(_range){
+                charstat.TakeDmg(10);
+                CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+            }
+            yield return new WaitForSeconds(0.1f);
+            _animator.SetBool("Attack",false);
+            _animator.SetBool("Idle",true);
+            yield return new WaitForSeconds(1f);
+            _delay = false;
         }
-        yield return new WaitForSeconds(0.1f);
-        _animator.SetBool("Attack",false);
-        _animator.SetBool("Idle",true);
-        yield return new WaitForSeconds(1f);
-        _delay = false;
     }
 
     ////
@@ -263,27 +276,29 @@ public class EnemyAIController : MonoBehaviour
     //#/ it does not do damage to the player if they can escape in time.
     //// 
     IEnumerator TankAttack(){
-        _delay = true;
-        agent.isStopped = true;
-        _animator.SetBool("Walk",false);
-        _animator.SetBool("Idle",false);
-        _animator.SetBool("Attack",true);
-        yield return new WaitForSeconds(1f);
-        if(_range){
+        if(takingdamage == false){
+            _delay = true;
+            agent.isStopped = true;
+            _animator.SetBool("Walk",false);
+            _animator.SetBool("Idle",false);
+            _animator.SetBool("Attack",true);
+            yield return new WaitForSeconds(1f);
+            if(_range){
             charstat.TakeDmg(20);
             CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
-        }
-        //if(_distance > 7f){
-        _animator.SetBool("Walk",false);
-        _animator.SetBool("Idle",true);
-        _animator.SetBool("Attack",false);
+            }
+            //if(_distance > 7f){
+            _animator.SetBool("Walk",false);
+            _animator.SetBool("Idle",true);
+            _animator.SetBool("Attack",false);
             //_animator.Play("Idle");
        // }
-        yield return new WaitForSeconds(2.5f);
-        agent.isStopped = false;
-        yield return new WaitForSeconds(0.5f);
-        _delay = false;
-    }
+            yield return new WaitForSeconds(2.5f);
+            agent.isStopped = false;
+            yield return new WaitForSeconds(0.5f);
+            _delay = false;
+            }
+        }
 
     ////
     //#/ RangedAttack instantiates a projectile randomly at the ranged enemies position.
@@ -316,6 +331,7 @@ public class EnemyAIController : MonoBehaviour
     //#/ The prefav handles its own trajectory.
     //// 
     IEnumerator FlyingAttack(){
+        if(!takingdamage){
         _delay = true;
         yield return new WaitForSeconds(Random.Range(4f,6f));
         if(_enemyDead == false){
@@ -329,5 +345,36 @@ public class EnemyAIController : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(3f,5f));
             _delay = false;
         }
+        }
+    }
+
+    public void enemyDamaged(){
+        StartCoroutine(TakeDamage());
+    }
+    
+    public IEnumerator TakeDamage(){
+        takingdamage = true;
+        //yield return new WaitForSeconds(0.1f);
+        agent.speed = 0;
+        _animator.SetBool("Hit",true);
+        yield return new WaitForSeconds(0.1f);
+        _animator.SetBool("Hit",false);
+        yield return new WaitForSeconds(0.4f);
+        
+        if(currentEnemy == Enemy.Melee)
+        agent.speed = 5f;
+
+        if(currentEnemy == Enemy.Tank)
+        agent.speed = 2f;
+
+        if(currentEnemy == Enemy.Ranged)
+        agent.speed = 4.5f;
+
+        if(currentEnemy == Enemy.Flying)
+        agent.speed = 9f;
+        
+        //yield return new WaitForSeconds(0.1f);
+        //_animator.SetBool("Hit",false);
+        takingdamage = false;
     }
 }

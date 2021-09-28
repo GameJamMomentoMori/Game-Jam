@@ -9,18 +9,21 @@ public class Interactable : MonoBehaviour
     public bool hasInteracted = false;
     public Transform interactionTransform;
     float distance;
+    EnemyAIController enemyAI;
 
     public virtual void Interact() {
         //This method is meant to be overwritten
         if (distance <= radius) {
-        Debug.Log("Interacting with " + transform.name);
-        StartCoroutine(InteractTimer());
+            Debug.Log("Interacting with " + transform.name);
+            enemyAI.enemyDamaged();
+            StartCoroutine(InteractTimer());
         }
     }
 
     void Awake() {
         GameObject playerObj = GameObject.Find("FirstPersonPlayer");
         player = playerObj.GetComponent<Transform>();
+        enemyAI = gameObject.GetComponent<EnemyAIController>();
         interactionTransform = this.transform;
     }
 
@@ -42,7 +45,7 @@ public class Interactable : MonoBehaviour
 
     IEnumerator InteractTimer(){
         hasInteracted= true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.65f);
         hasInteracted = false;
     }
 }
