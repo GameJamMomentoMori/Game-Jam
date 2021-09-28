@@ -465,9 +465,9 @@ GameObject:
   - component: {fileID: 6182408475028905638}
   - component: {fileID: 9009831356596725464}
   - component: {fileID: 5727092499556158575}
-  - component: {fileID: 4714368663310858302}
   - component: {fileID: -5768131821425036314}
   - component: {fileID: 2417362482389671697}
+  - component: {fileID: 4714368663310858302}
   - component: {fileID: 713009294651207335}
   m_Layer: 0
   m_Name: Ranged Enemy
@@ -560,22 +560,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &4714368663310858302
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420450425489510983}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!114 &-5768131821425036314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +594,22 @@ MonoBehaviour:
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
   _blood: {fileID: 0}
   isPlayer: 0
+--- !u!54 &4714368663310858302
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420450425489510983}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!114 &713009294651207335
 MonoBehaviour:
   m_ObjectHideFlags: 0

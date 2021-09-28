@@ -369,9 +369,9 @@ public class EnemyAIController : MonoBehaviour
         //yield return new WaitForSeconds(0.1f);
         agent.speed = 0;
         _animator.SetBool("Hit",true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         _animator.SetBool("Hit",false);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         
         if(currentEnemy == Enemy.Melee)
         agent.speed = 5f;
