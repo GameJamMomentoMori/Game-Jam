@@ -594,6 +594,8 @@ MonoBehaviour:
   - {fileID: 0}
   _projectileGravityPrefab: {fileID: 0}
   _smoke: {fileID: 1611514690112315713, guid: b13f68beca4ca3e44ad72d5146dc9c12, type: 3}
+  _healthPotion: {fileID: 7382956281764460591, guid: c059ebfdc8f702446991c16afae97dce,
+    type: 3}
 --- !u!195 &8259582781299135538
 NavMeshAgent:
   m_ObjectHideFlags: 0
