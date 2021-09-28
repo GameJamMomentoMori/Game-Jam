@@ -20,7 +20,7 @@ public class Rotator : MonoBehaviour
     
     void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
-            //Instantiate(_particles,transform.position,Quaternion.identity);
+            Instantiate(_particles,new Vector3(transform.position.x,transform.position.y+1,transform.position.z),Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

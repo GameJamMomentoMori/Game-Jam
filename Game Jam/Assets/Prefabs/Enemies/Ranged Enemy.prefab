@@ -963,7 +963,7 @@ MonoBehaviour:
   radius: 6
   hasInteracted: 0
   isRanged: 0
-  interactionTransform: {fileID: 0}
+  interactionTransform: {fileID: 6165303417009962919}
 --- !u!114 &3916005993699344104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,8 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40f1fb6ef2064948819962bce5967e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarUI: {fileID: 0}
-  slider: {fileID: 0}
+  healthBarUI: {fileID: 1786316126008705900}
+  slider: {fileID: 6637559325742715953}
   enemy: {fileID: 6420450425489510983}
 --- !u!1 &8125689009627277102
 GameObject:
