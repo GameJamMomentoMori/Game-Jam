@@ -13469,6 +13469,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689df1f49f65b0d4490952a91be2988f, type: 3}
+--- !u!95 &745122273 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6241997181576014868, guid: e52e3a49a2d352445b81c54c0ecd760a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213422225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &745891748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1538237780636393395, guid: 689df1f49f65b0d4490952a91be2988f,
@@ -20634,15 +20640,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8811447103111519525, guid: e52e3a49a2d352445b81c54c0ecd760a,
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8811447103111519531, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_Name
-      value: Hurt
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8811447103449361800, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
@@ -20764,31 +20765,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 8811447104294275996, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_Name
-      value: Crosshair
-      objectReference: {fileID: 0}
-    - target: {fileID: 8811447104294275998, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 249.2256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 19.8532
-      objectReference: {fileID: 0}
-    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
 --- !u!4 &1214192505 stripped
@@ -20813,7 +20789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1222260685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20826,83 +20802,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7199d2b31d965fb419ddd26afa4a3f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCount: {fileID: 0}
+  WCount: {fileID: 1725482311}
   waves:
-  - name: Wave 1
+  - name: Wave 1 - 3 Melee Enemies
     enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
     Enemies: 03000000
-    rate: 2
-  - name: Wave 2
+    rate: 0.1
+  - name: Wave 2 - 5 Melee Enemies
     enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    Enemies: 02000000
-    rate: 5
-  - name: Wave 3
+    Enemies: 05000000
+    rate: 0.2
+  - name: Wave 3 - 3 Melee, 2 Ranged
+    enemy:
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    Enemies: 0300000002000000
+    rate: 0.2
+  - name: Wave 4 - 4 Ranged, 1 Melee
+    enemy:
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    Enemies: 010000000400000001000000
+    rate: 0.3
+  - name: Wave 5 - 3 Flying, 2 Ranged
+    enemy:
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    Enemies: 01000000020000000200000001000000
+    rate: 0.3
+  - name: Wave 6 - 3 Flying, 1 Melee, 2 Ranged
+    enemy:
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    Enemies: 0100000001000000020000000100000001000000
+    rate: 0.3
+  - name: Wave 7 - 3 Skeletons, 3 Flying, 3 Ranged
     enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
     - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
     - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    Enemies: 020000000100000001000000010000000200000002000000
+    rate: 0.2
+  - name: Wave 8 - 1 Tank, 3 Skeletons
+    enemy:
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
     - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 05000000030000000000000000000000
-    rate: 2
-  - name: Wave 4
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    Enemies: 020000000100000001000000
+    rate: 0.2
+  - name: Wave 9 - 1 Tank, 2 Ranged, 1 Flying, 3 Skeleton
+    enemy:
+    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
+    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
+    Enemies: 0200000001000000010000000200000001000000
+    rate: 0.2
+  - name: Wave 10 Final Wave!! 5 Melee, 4 Ranged, 3 Flying, 2 Tank
     enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
     - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
     - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 05000000050000000500000000000000
-    rate: 2
-  - name: Wave 5
-    enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
     - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
     - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 00000000000000000000000005000000
-    rate: 2
-  - name: Wave 6
-    enemy:
     - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
     - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
-    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
     - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 03000000030000000300000003000000
-    rate: 2
-  - name: Wave 7
-    enemy:
-    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
-    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 07000000070000000000000000000000
-    rate: 2
-  - name: Wave 8
-    enemy:
-    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
-    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 05000000030000000000000000000000
-    rate: 2
-  - name: Wave 9
-    enemy:
-    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
-    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 03000000030000000500000000000000
-    rate: 2
-  - name: Wave 10
-    enemy:
-    - {fileID: 8259582781299135539, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
-    - {fileID: 6165303417009962919, guid: 6090dc5b71bf1134fb4586131aa37fa6, type: 3}
-    - {fileID: 9023467869315761069, guid: e8106320fc0db16459e302f2e25ca644, type: 3}
-    - {fileID: 6282504183450853245, guid: 307a51db5bf70b047ad59afb3d51deee, type: 3}
-    Enemies: 05000000050000000500000005000000
-    rate: 2
-  nextWave: 0
+    Enemies: 02000000010000000100000002000000010000000200000002000000010000000100000001000000
+    rate: 0.1
   spawnPoints:
   - {fileID: 150878633}
   - {fileID: 989392839}
@@ -26853,15 +26834,14 @@ PrefabInstance:
       propertyPath: HPBar
       value: 
       objectReference: {fileID: 1019004426}
+    - target: {fileID: 888626027, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
+      propertyPath: _blood
+      value: 
+      objectReference: {fileID: 745122273}
     - target: {fileID: 888626028, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 1019004427}
-    - target: {fileID: 2771003341929341616, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
-        type: 3}
-      propertyPath: HPBar
-      value: 
-      objectReference: {fileID: 1019004426}
     - target: {fileID: 6300306051578700571, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: m_RootOrder
@@ -29036,7 +29016,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh271740
+  m_Name: pb_Mesh24382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29729,6 +29709,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689df1f49f65b0d4490952a91be2988f, type: 3}
+--- !u!114 &1725482311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7646719599413681490, guid: e52e3a49a2d352445b81c54c0ecd760a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213422225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c2d89e8526ad24c8d73ff403580705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1726412129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7163559476250896143, guid: 7a37dcfd10b6e244494b7127103822c2,
