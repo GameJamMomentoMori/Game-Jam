@@ -12,8 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionsMenu;
     public Object menu;
-    public AudioMixer audiomixer;
-    public Slider slider;
+    //public Slider slider;
 
     // Update is called once per frame
     void Update()
@@ -34,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+         AudioListener.pause = false;
         optionsMenu.SetActive(false);
         Time.timeScale = 1f;
         CursorLock.cursorLocked = true;
@@ -42,6 +42,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        AudioListener.pause = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         CursorLock.cursorLocked = false;
@@ -60,7 +61,5 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void SliderSet(float sliderVal){
-        audiomixer.SetFloat("MusicVol", Mathf.Log10(sliderVal)*20);
-    }
+    
 }
