@@ -10,7 +10,6 @@ public class CharacterCombat : MonoBehaviour
     public float atkDelay = .6f;
 
     public event System.Action OnAtk;
-
     CharStat myStats;
 
     // Start is called before the first frame update
@@ -35,7 +34,7 @@ public class CharacterCombat : MonoBehaviour
 
     IEnumerator DoDmg (CharStat stats, float delay) {
         yield return new WaitForSeconds(delay);
-
         stats.TakeDmg(myStats.dmg.getVal());
     }
+
 }

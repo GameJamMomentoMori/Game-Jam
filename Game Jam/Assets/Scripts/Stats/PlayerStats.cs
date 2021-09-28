@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : CharStat
 {
+   
     // Start is called before the first frame update
     void Start()
     {
+        _blood = GameObject.Find("Blood").GetComponent<Animator>();
         //EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 
@@ -26,4 +28,6 @@ public class PlayerStats : CharStat
         base.Die();
         PlayerManager.instance.KillPlayer();
     }
+
+   
 }
