@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mouse_Look : MonoBehaviour
 {
 
-    public float mouseSensitivity = 100f;
+    public static float mouseSensitivity = 80f;
 
     public static bool cursorLocked = true;
 
@@ -47,5 +47,11 @@ public class Mouse_Look : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public void AdjustSensitivity(float newSens)
+    {
+        mouseSensitivity = newSens;
+        Debug.Log("Changed sensitivity: " + mouseSensitivity);
     }
 }

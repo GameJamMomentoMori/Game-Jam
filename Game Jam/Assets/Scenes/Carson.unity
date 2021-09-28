@@ -472,6 +472,14 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 22354677}
+    - target: {fileID: 888626027, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
+      propertyPath: HPBar
+      value: 
+      objectReference: {fileID: 22354676}
+    - target: {fileID: 888626028, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 22354677}
     - target: {fileID: 6300306051578700568, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: jump
@@ -709,6 +717,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6b85c81253b92f43aaa0a179005a7d3, type: 3}
+--- !u!4 &1779828753 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6300306051578700571, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+    type: 3}
+  m_PrefabInstance: {fileID: 827992531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3868718002474963649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,6 +730,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3868718002513039184, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3868718002614640632, guid: 5546704e0a6c8a6428f38954ba3b0007,
         type: 3}
       propertyPath: m_Name
@@ -824,6 +843,46 @@ PrefabInstance:
     - target: {fileID: 3868718002614640636, guid: 5546704e0a6c8a6428f38954ba3b0007,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868718003628001022, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868718003675324334, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755278269845189425, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755278269845189425, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755278269845189425, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716867222993353999, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 1779828753}
+    - target: {fileID: 8443454314784358377, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443454314784358377, guid: 5546704e0a6c8a6428f38954ba3b0007,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -954,6 +1013,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 232.2922
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 16.8361
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811447105026502302, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
