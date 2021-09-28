@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
             _playerRightAnimator.Play("Attack");
+            Debug.Log(_playerRightAnimator.GetCurrentAnimatorStateInfo(0).length);
             //ian work in progress rn it work fine tho
             //if player presses mouse button again within timeframe of first animation,
             //play second attack animation

@@ -266,8 +266,10 @@ public class EnemyAIController : MonoBehaviour
 
             if(_range){
                 if(!takingdamage){
-                charstat.TakeDmg(10);
-                CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+                    if(!_enemyDead){
+                    charstat.TakeDmg(10);
+                    CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+                    }
                 }
             }
             yield return new WaitForSeconds(0.1f);
@@ -289,16 +291,16 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Walk",false);
             _animator.SetBool("Idle",false);
             _animator.SetBool("Attack",true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.2f);
             if(_range){
-               
+               if(!_enemyDead){
                 charstat.TakeDmg(20);
                 CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
-                
+               }
             }
             //if(_distance > 7f){
-            _animator.SetBool("Walk",false);
-            _animator.SetBool("Idle",true);
+           // _animator.SetBool("Walk",false);
+           // _animator.SetBool("Idle",true);
             _animator.SetBool("Attack",false);
             //_animator.Play("Idle");
        // }
@@ -316,6 +318,7 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator RangedAttack(){
         _delay = true;
+        yield return new WaitForSeconds(1f);
         if(!takingdamage){
         //_animator.SetBool("Attack",true);
         if(_enemyDead == false){
@@ -325,6 +328,7 @@ public class EnemyAIController : MonoBehaviour
                 _animator.SetBool("Attack",true);
                // _animator.Play("Attack");
                 yield return new WaitForSeconds(1f);
+                if(!_enemyDead)
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
             yield return new WaitForSeconds(0.1f);
