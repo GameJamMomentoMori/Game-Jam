@@ -21,7 +21,8 @@ public class Interactable : MonoBehaviour
             enemyAI.enemyDamaged();
             if (isRanged) {
                 enemyStats.TakeDmg(playerStats.dmg.getVal() / 2);
-                Debug.Log(transform.name + " took " + (playerStats.dmg.getVal()/2) + " damage!");
+                Debug.Log(transform.name + " took " + (playerStats.dmg.getVal()/4) + " damage!");
+                isRanged = false;
             } else {
                 enemyStats.TakeDmg(playerStats.dmg.getVal());
                 Debug.Log(transform.name + " took " + playerStats.dmg.getVal() + " damage!");
