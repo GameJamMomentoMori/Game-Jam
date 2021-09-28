@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     CharStat myStats;
     [SerializeField] EnemyHealthController enemyStats;
     [SerializeField] CharacterCombat charAtk;
-
+    public AudioSource slash;
     void Start() {
         cam = Camera.main;
         myStats = GetComponent<CharStat>();
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
                     if(interactable.hasInteracted== false)
+                    slash.Play();
                     interactable.Interact();
                 }
             }
