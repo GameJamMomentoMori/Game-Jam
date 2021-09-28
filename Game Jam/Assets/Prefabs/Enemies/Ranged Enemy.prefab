@@ -658,6 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2407569669709047041}
   - component: {fileID: 6637559325742715953}
+  - component: {fileID: 2652990954568890386}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -738,6 +739,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2652990954568890386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082791123974771852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf8163472f546428eee7fa4a3bf4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &6388573930915136143
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +890,7 @@ MonoBehaviour:
   _delay: 0
   _flyEmpties: []
   _projectileGravityPrefab: {fileID: 0}
+  _smoke: {fileID: 1611514690112315713, guid: b13f68beca4ca3e44ad72d5146dc9c12, type: 3}
 --- !u!195 &5727092499556158575
 NavMeshAgent:
   m_ObjectHideFlags: 0

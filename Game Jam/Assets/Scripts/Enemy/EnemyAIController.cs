@@ -37,6 +37,7 @@ public class EnemyAIController : MonoBehaviour
     [Header("Flying")]
     [SerializeField] GameObject[] _flyEmpties = new GameObject[8];
     [SerializeField] GameObject _projectileGravityPrefab;
+    [SerializeField] GameObject _smoke;
     
     CharStat charstat;
     LaunchBall launchball;
@@ -367,8 +368,8 @@ public class EnemyAIController : MonoBehaviour
         _enemyDead = true;
         agent.enabled = false;
         _animator.SetBool("Death",true);
-        
         agent.isStopped = true;
+        StartCoroutine(SmokeParticles());
     }
     
     public IEnumerator TakeDamage(){
@@ -395,5 +396,13 @@ public class EnemyAIController : MonoBehaviour
         //yield return new WaitForSeconds(0.1f);
         //_animator.SetBool("Hit",false);
         takingdamage = false;
+    }
+
+    IEnumerator SmokeParticles(){
+        yield return new WaitForSeconds(2.9f);
+        if(currentEnemy == Enemy.Tank)
+        Instantiate(_smoke,new Vector3(transform.position.x,transform.position.y-2f,transform.position.z),Quaternion.identity);
+        else
+        Instantiate(_smoke,transform.position,Quaternion.identity);
     }
 }
