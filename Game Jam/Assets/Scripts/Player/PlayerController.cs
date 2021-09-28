@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     CharStat myStats;
     [SerializeField] EnemyHealthController enemyStats;
     [SerializeField] CharacterCombat charAtk;
-
+    
+    public AudioSource slash;
+    public AudioSource fire; 
     void Start() {
         cam = Camera.main;
         myStats = GetComponent<CharStat>();
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
             _playerRightAnimator.Play("Attack");
+            //Debug.Log(_playerRightAnimator.GetCurrentAnimatorStateInfo(0).length);
             //ian work in progress rn it work fine tho
             //if player presses mouse button again within timeframe of first animation,
             //play second attack animation
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
             if(Physics.Raycast(ray, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
+                    slash.Play();
                     if(interactable.hasInteracted== false)
                     interactable.Interact();
                 }
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Projectile(){
         _delay = true;
         //yield return new WaitForSeconds(0.5f);
+        fire.Play();
         Instantiate(_playerProjectile,_firepointTransform.position,_firepointTransform.rotation);
         yield return new WaitForSeconds(1.2f);
         _delay = false;

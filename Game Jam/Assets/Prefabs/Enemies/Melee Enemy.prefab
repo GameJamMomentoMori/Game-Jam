@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100221669514591795}
   - component: {fileID: 1478043698403786961}
+  - component: {fileID: 292668452782742871}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -195,6 +196,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &292668452782742871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030253888395447300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf8163472f546428eee7fa4a3bf4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &4818097824111781983
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +593,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _projectileGravityPrefab: {fileID: 0}
+  _smoke: {fileID: 1611514690112315713, guid: b13f68beca4ca3e44ad72d5146dc9c12, type: 3}
+  _healthPotion: {fileID: 7382956281764460591, guid: c059ebfdc8f702446991c16afae97dce,
+    type: 3}
 --- !u!195 &8259582781299135538
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -620,6 +637,8 @@ MonoBehaviour:
   armor:
     baseVal: 0
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
+  _blood: {fileID: 0}
+  isPlayer: 0
 --- !u!54 &3892900840805169683
 Rigidbody:
   m_ObjectHideFlags: 0

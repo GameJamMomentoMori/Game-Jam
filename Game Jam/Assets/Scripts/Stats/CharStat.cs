@@ -14,7 +14,7 @@ public class CharStat : MonoBehaviour
     void Start()
     {
         //HPBar = GameObject.Find("HealthBar");
-        HPBar.SetMaxHealth(maxHP);
+        //HPBar.SetMaxHealth(maxHP);
         _blood = GameObject.Find("Blood").GetComponent<Animator>();
     }
 

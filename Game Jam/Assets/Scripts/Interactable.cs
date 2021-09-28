@@ -17,15 +17,17 @@ public class Interactable : MonoBehaviour
     public virtual void Interact() {
         //This method is meant to be overwritten
         if (isRanged) {
+            
             enemyStats.TakeDmg(playerStats.dmg.getVal() / 2);
+            enemyAI.enemyDamaged();
             Debug.Log(transform.name + " took " + (playerStats.dmg.getVal()/4) + " damage!");
             isRanged = false;
+            
                 StartCoroutine(InteractTimer());
         } else {
             if (distance <= radius) {
                 Debug.Log("Interacting with " + transform.name);
                 enemyAI.enemyDamaged();
-            
                 enemyStats.TakeDmg(playerStats.dmg.getVal());
                 Debug.Log(transform.name + " took " + playerStats.dmg.getVal() + " damage!");
                 
@@ -61,7 +63,7 @@ public class Interactable : MonoBehaviour
 
     IEnumerator InteractTimer(){
         hasInteracted= true;
-        yield return new WaitForSeconds(0.86f);
+        yield return new WaitForSeconds(0.7435898f);
         hasInteracted = false;
     }
 }

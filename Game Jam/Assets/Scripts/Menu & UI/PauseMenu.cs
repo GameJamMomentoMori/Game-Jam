@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GamePaused = false;
 
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
     public Object menu;
+    //public Slider slider;
 
     // Update is called once per frame
     void Update()
@@ -29,6 +33,8 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+         AudioListener.pause = false;
+        optionsMenu.SetActive(false);
         Time.timeScale = 1f;
         CursorLock.cursorLocked = true;
         GamePaused = false;
@@ -36,6 +42,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        AudioListener.pause = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         CursorLock.cursorLocked = false;
@@ -44,8 +51,8 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(menu.name);
         Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 
     public void QuitGame()
@@ -53,4 +60,6 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting Game");
         Application.Quit();
     }
+
+    
 }

@@ -37,6 +37,8 @@ public class EnemyAIController : MonoBehaviour
     [Header("Flying")]
     [SerializeField] GameObject[] _flyEmpties = new GameObject[8];
     [SerializeField] GameObject _projectileGravityPrefab;
+    [SerializeField] GameObject _smoke;
+    [SerializeField] GameObject _healthPotion;
     
     CharStat charstat;
     LaunchBall launchball;
@@ -264,8 +266,10 @@ public class EnemyAIController : MonoBehaviour
 
             if(_range){
                 if(!takingdamage){
-                charstat.TakeDmg(10);
-                CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+                    if(!_enemyDead){
+                    charstat.TakeDmg(10);
+                    CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+                    }
                 }
             }
             yield return new WaitForSeconds(0.1f);
@@ -287,16 +291,16 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Walk",false);
             _animator.SetBool("Idle",false);
             _animator.SetBool("Attack",true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.2f);
             if(_range){
-               
+               if(!_enemyDead){
                 charstat.TakeDmg(20);
                 CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
-                
+               }
             }
             //if(_distance > 7f){
-            _animator.SetBool("Walk",false);
-            _animator.SetBool("Idle",true);
+           // _animator.SetBool("Walk",false);
+           // _animator.SetBool("Idle",true);
             _animator.SetBool("Attack",false);
             //_animator.Play("Idle");
        // }
@@ -314,6 +318,7 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator RangedAttack(){
         _delay = true;
+        yield return new WaitForSeconds(1f);
         if(!takingdamage){
         //_animator.SetBool("Attack",true);
         if(_enemyDead == false){
@@ -323,6 +328,7 @@ public class EnemyAIController : MonoBehaviour
                 _animator.SetBool("Attack",true);
                // _animator.Play("Attack");
                 yield return new WaitForSeconds(1f);
+                if(!_enemyDead)
                 Instantiate(_projectilePrefab,_shotpoint.transform.position,transform.rotation);
             }
             yield return new WaitForSeconds(0.1f);
@@ -367,8 +373,8 @@ public class EnemyAIController : MonoBehaviour
         _enemyDead = true;
         agent.enabled = false;
         _animator.SetBool("Death",true);
-        
         agent.isStopped = true;
+        StartCoroutine(OnDeath());
     }
     
     public IEnumerator TakeDamage(){
@@ -395,5 +401,19 @@ public class EnemyAIController : MonoBehaviour
         //yield return new WaitForSeconds(0.1f);
         //_animator.SetBool("Hit",false);
         takingdamage = false;
+    }
+
+    IEnumerator OnDeath(){
+        yield return new WaitForSeconds(2.9f);
+        if(currentEnemy == Enemy.Tank)
+        Instantiate(_smoke,new Vector3(transform.position.x,transform.position.y-2f,transform.position.z),Quaternion.identity);
+        else
+        Instantiate(_smoke,transform.position,Quaternion.identity);
+        
+        int healthpot = Random.Range(0,10);
+        if(healthpot == 9){
+            if(_healthPotion != null)
+            Instantiate(_healthPotion,transform.position,Quaternion.identity);
+        }
     }
 }

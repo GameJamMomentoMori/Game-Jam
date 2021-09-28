@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 6.33745}
+  m_AnchoredPosition: {x: 0, y: 6.33745}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3769634688440376127
@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5944108099890685396}
   - component: {fileID: 4884651663110337027}
+  - component: {fileID: 7825454394438932587}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -295,7 +296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -4.12}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4884651663110337027
@@ -349,6 +350,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7825454394438932587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952989308366615817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf8163472f546428eee7fa4a3bf4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &7976966954107063212
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +537,7 @@ MonoBehaviour:
   - {fileID: 0}
   _projectileGravityPrefab: {fileID: 2410905392140974165, guid: bbcb100d96683e74991fdbcfae0b171f,
     type: 3}
+  _smoke: {fileID: 1611514690112315713, guid: b13f68beca4ca3e44ad72d5146dc9c12, type: 3}
 --- !u!195 &7479628758061658213
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -638,6 +653,8 @@ MonoBehaviour:
   armor:
     baseVal: 0
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
+  _blood: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &-4077440963645520640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,8 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40f1fb6ef2064948819962bce5967e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarUI: {fileID: 0}
-  slider: {fileID: 0}
+  healthBarUI: {fileID: 5360134792340114503}
+  slider: {fileID: 4884651663110337027}
   enemy: {fileID: 8191000265472093773}
 --- !u!1 &8927211176602782318
 GameObject:

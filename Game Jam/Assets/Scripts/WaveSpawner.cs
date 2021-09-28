@@ -5,13 +5,14 @@ public class WaveSpawner : MonoBehaviour
 {
 
     public enum SpawnState {Spawning, Waiting, Counting}
+    public WaveCount WCount;
 
     //IANS CHANGES
     //Wave enemy and enemy count vars are now arrays. can define 
     //enemy types to spawn and enemy counts per enemy type
     //creating a wave with mismatching array lengths returns an error and doesnt spawn
     //a wave
-    
+
     //defining a wave through a seperate class
     //Name of wave, enemy input (can expand for multiple enemy types), Number of enemies, rate enemies spawn
     [System.Serializable]
@@ -105,6 +106,9 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             nextWave++;
+
+            // Increment the wave counter on the HUD
+            WCount.NextWave();
         }
     }
 
