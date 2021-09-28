@@ -64,6 +64,13 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting Game");
         Application.Quit();
     }
-
+    
+    public void Hover(){
+        hover.Play();
+    }
+    
+     public void Press(){
+        press.Play();
+    }
     
 }

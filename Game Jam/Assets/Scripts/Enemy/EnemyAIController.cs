@@ -26,6 +26,7 @@ public class EnemyAIController : MonoBehaviour
     public AudioSource snakedeath;
     public AudioSource witchFire;
     public AudioSource acidSpit;
+    public AudioSource tankAttack;
 
     [Header("State")]
     [SerializeField] bool _enemyDead;
@@ -300,6 +301,7 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Idle",false);
             _animator.SetBool("Attack",true);
             yield return new WaitForSeconds(1.2f);
+            tankAttack.Play();
             if(_range){
                if(!_enemyDead){
                 charstat.TakeDmg(20);
