@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 230651810}
   - component: {fileID: 6169521193748516635}
   - component: {fileID: 8484198017049230306}
+  - component: {fileID: 3136648659864229786}
   m_Layer: 0
   m_Name: Tank Enemy
   m_TagString: Enemy
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   hasInteracted: 0
+  isRanged: 0
   interactionTransform: {fileID: 6282504183450853245}
 --- !u!114 &8484198017049230306
 MonoBehaviour:
@@ -253,13 +255,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  currHP: 0
   maxSP: 25
   dmg:
     baseVal: 0
   armor:
     baseVal: 0
   HPBar: {fileID: 0}
+--- !u!114 &3136648659864229786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609730828544111261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90ff6e20f4485240b5a3d5709740026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!1 &6722648650953629252
 GameObject:
   m_ObjectHideFlags: 0

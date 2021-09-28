@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 8363016566998193393}
   - component: {fileID: 3892900840805169683}
   - component: {fileID: 3971256367614285640}
+  - component: {fileID: 3211527798581539540}
   m_Layer: 0
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -200,7 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  currHP: 0
   maxSP: 0
   dmg:
     baseVal: 0
@@ -237,7 +237,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   hasInteracted: 0
+  isRanged: 0
   interactionTransform: {fileID: 8259582781299135539}
+--- !u!114 &3211527798581539540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259582781299135496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90ff6e20f4485240b5a3d5709740026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!95 &1239359980
 Animator:
   serializedVersion: 3
