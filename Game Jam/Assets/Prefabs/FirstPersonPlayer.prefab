@@ -1213,6 +1213,8 @@ GameObject:
   - component: {fileID: 1988779065708206853}
   - component: {fileID: 888626027}
   - component: {fileID: 888626028}
+  - component: {fileID: 2771003341929341616}
+  - component: {fileID: 7776572926158871701}
   m_Layer: 3
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -1352,8 +1354,41 @@ MonoBehaviour:
   HPBar: {fileID: 0}
   _blood: {fileID: 0}
   isPlayer: 1
-  _blood: {fileID: 0}
 --- !u!114 &888626028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300306051578700573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f118f78ad4565fb4a8d76c502cd05d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+--- !u!114 &2771003341929341616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300306051578700573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e6e3a1091dba408b5244dd20c0ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  maxSP: 25
+  dmg:
+    baseVal: 20
+  armor:
+    baseVal: 0
+  HPBar: {fileID: 0}
+  _blood: {fileID: 0}
+  isPlayer: 0
+--- !u!114 &7776572926158871701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
