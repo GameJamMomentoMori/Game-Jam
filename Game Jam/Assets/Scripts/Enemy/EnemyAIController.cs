@@ -81,7 +81,7 @@ public class EnemyAIController : MonoBehaviour
         }
         FollowPlayer(currentEnemy);
         
-         if(currentEnemy == Enemy.Ranged){
+         if(currentEnemy == Enemy.Ranged && !takingdamage){
             RunFromPlayer();
         }
     }
@@ -260,8 +260,10 @@ public class EnemyAIController : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
 
             if(_range){
+                if(!takingdamage){
                 charstat.TakeDmg(10);
                 CameraShaker.Instance.ShakeOnce(8, 3, 0.2f, 0.5f);
+                }
             }
             yield return new WaitForSeconds(0.1f);
             _animator.SetBool("Attack",false);
@@ -276,7 +278,7 @@ public class EnemyAIController : MonoBehaviour
     //#/ it does not do damage to the player if they can escape in time.
     //// 
     IEnumerator TankAttack(){
-        if(takingdamage == false){
+        //if(takingdamage == false){
             _delay = true;
             agent.isStopped = true;
             _animator.SetBool("Walk",false);
@@ -284,8 +286,10 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Attack",true);
             yield return new WaitForSeconds(1f);
             if(_range){
-            charstat.TakeDmg(20);
-            CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
+               
+                charstat.TakeDmg(20);
+                CameraShaker.Instance.ShakeOnce(20, 3, 0.3f, 0.5f);
+                
             }
             //if(_distance > 7f){
             _animator.SetBool("Walk",false);
@@ -298,7 +302,7 @@ public class EnemyAIController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             _delay = false;
             }
-        }
+        //}
 
     ////
     //#/ RangedAttack instantiates a projectile randomly at the ranged enemies position.
@@ -307,7 +311,7 @@ public class EnemyAIController : MonoBehaviour
     //// 
     IEnumerator RangedAttack(){
         _delay = true;
-        
+        if(!takingdamage){
         //_animator.SetBool("Attack",true);
         if(_enemyDead == false){
             if(_projectilePrefab != null){ //check if the prefab is assigned so no errors are returned
@@ -323,6 +327,7 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Idle",true);
             yield return new WaitForSeconds(Random.Range(3f,6f));
             _delay = false;
+            }
         }
     }
 
@@ -340,7 +345,9 @@ public class EnemyAIController : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 _animator.SetBool("Attack",false);
                 yield return new WaitForSeconds(0.9f);
+                if(!takingdamage){
                 Instantiate(_projectileGravityPrefab,_shotpoint.transform.position,Quaternion.identity);
+                }
             }
             yield return new WaitForSeconds(Random.Range(3f,5f));
             _delay = false;
