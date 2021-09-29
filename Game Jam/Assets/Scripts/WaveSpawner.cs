@@ -7,6 +7,7 @@ public class WaveSpawner : MonoBehaviour
     public enum SpawnState {Spawning, Waiting, Counting}
     public WaveCount WCount;
     public GameObject WaveCountOBJ;
+    public DialogManager dialog;
     public GameObject black;
 
     //IANS CHANGES
