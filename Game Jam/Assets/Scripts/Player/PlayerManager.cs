@@ -29,9 +29,10 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator DieAnimation(){
         //dead = true;
         yield return new WaitForSeconds(1f);
-        blood.SetBool("DeathAnimation",true);
+        blood.Play("Death Animation");
         yield return new WaitForSeconds(1f);
         fade.SetActive(true);
+        yield return new WaitForSeconds(2f);
         //yield return new WaitForSeconds(1f);
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

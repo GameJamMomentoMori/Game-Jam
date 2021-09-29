@@ -28,7 +28,7 @@ public class DialogManager : MonoBehaviour
     public Animator dp;
     public Animator op;
     public GameObject black;
-
+    public AudioSource music;
     public GameObject background;
     public GameObject waveSpawner;
 
@@ -106,31 +106,37 @@ public class DialogManager : MonoBehaviour
 
                 if(cutscene == 1 && index == 1){
                     line2.Play();
+                    line2.Stop();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 2){
                     line3.Play();
+                    line2.Stop();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
                if(cutscene == 1 && index == 3){
                    line4.Play();
+                   line3.Stop();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 4){
                     line5.Play();
+                    line4.Stop();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 5){
                     line6.Play();
+                    line5.Stop();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 6){
                     line7.Play();
+                    line6.Stop();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
@@ -142,47 +148,56 @@ public class DialogManager : MonoBehaviour
 
                if(cutscene == 3 && index == 1){
                     line9.Play();
+                    line8.Stop();
                     pp.Play("PortraitOut");
                     op.Play("PortraitFullIn");
                 }
                 if(cutscene == 3 && index == 2){
                     line10.Play();
+                    line9.Stop();
                     op.Play("PortraitOut");
                     pp.Play("PortraitIn");
                 }
                 if(cutscene == 3 && index == 3){
                     line11.Play();
+                    line10.Stop();
                     pp.Play("PortraitOut");
                     op.Play("PortraitIn");
                 }
                 if(cutscene == 3 && index == 4){
                     line12.Play();
+                    line11.Stop();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 3 && index == 5){
                     line13.Play();
+                    line12.Stop();
                     op.Play("PortaitHalfOut");
                     dp.Play("PortraitFullIn");
                     pp.Play("PortraitOut");
                 }
                 if(cutscene == 3 && index == 6){
                     line14.Play();
+                    line13.Stop();
                     dp.Play("PortraitOut");
                     pp.Play("PortraitIn");
                 }
                 if(cutscene == 3 && index == 7){
                     line15.Play();
+                    line14.Stop();
                     dp.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
                 if(cutscene == 3 && index == 8){
                     line16.Play();
+                    line15.Stop();
                     dp.Play("PortraitOut");
                     pp.Play("PortraitIn");
                 }
                 if(cutscene == 3 && index == 9){
                     line17.Play();
+                    line16.Stop();
                     dp.Play("PortraitIn");
                     pp.Play("PortraitOut");
                     StartCoroutine(EndGame());
@@ -214,8 +229,10 @@ public class DialogManager : MonoBehaviour
     }
 
     public IEnumerator BoxIn(){
-        if(cutscene == 2)
+        if(cutscene == 2){
+        FadeMusic.StartFade(music,3,0);
         cutscene = 3;
+        }
 
         if(cutscene == 0)
         cutscene =1;
@@ -248,6 +265,7 @@ public class DialogManager : MonoBehaviour
 
      IEnumerator BoxOut(){
          cutscene = 2;
+         FadeMusic.StartFade(music,3,1);
         //Time.timeScale = 0f;
         op.Play("PortaitHalfOut");
         pp.Play("PortaitHalfOut");
@@ -261,6 +279,7 @@ public class DialogManager : MonoBehaviour
         //black.Play("FadeOut");
         dialogDone = true;
         waveSpawner.SetActive(true);
+        music.Play();
     }
 
     IEnumerator EndGame(){

@@ -57,9 +57,6 @@ public class PlayerProjectile : MonoBehaviour
             Interactable interactable = other.GetComponent<Collider>().GetComponent<Interactable>();
             if(interactable != null) {
                     if(interactable.hasInteracted== false) {
-                        if(!dialog.dialogDone) {
-                            return;
-                        }
                         interactable.isRanged = true;
                         interactable.Interact();
                     }
