@@ -14,10 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject optionsMenu;
     public Object menu;
     //public Slider slider;
-    void Start(){
-        press.ignoreListenerPause = true;
-        hover.ignoreListenerPause = true;
-    }
+
     // Update is called once per frame
     void Update()
     {
