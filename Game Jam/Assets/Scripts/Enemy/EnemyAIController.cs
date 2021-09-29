@@ -420,7 +420,7 @@ public class EnemyAIController : MonoBehaviour
         agent.speed = 5f;
 
         if(currentEnemy == Enemy.Tank)
-        agent.speed = 2f;
+        agent.speed = 3f;
 
         if(currentEnemy == Enemy.Ranged)
         agent.speed = 4.5f;

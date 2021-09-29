@@ -31,7 +31,7 @@ public class DialogManager : MonoBehaviour
     public AudioSource music;
     public GameObject background;
     public GameObject waveSpawner;
-
+    public GameObject EnterKey;
     public AudioSource line1;
     public AudioSource line2;
     public AudioSource line3;
@@ -96,11 +96,13 @@ public class DialogManager : MonoBehaviour
     {
         if(textDisplay.text == sentences[index]){
                 sentenceComplete = true;
+                EnterKey.SetActive(true);
                 index++;
             }
 
         if(sentenceComplete){
             if(Input.GetKeyDown(KeyCode.Return)){
+                EnterKey.SetActive(false);
                 sentenceComplete = false;
                 NextSentence();
 
@@ -230,6 +232,8 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator BoxIn(){
         if(cutscene == 2){
+        dialogDone = false;
+        waveSpawner.SetActive(false);
         FadeMusic.StartFade(music,3,0);
         cutscene = 3;
         }
