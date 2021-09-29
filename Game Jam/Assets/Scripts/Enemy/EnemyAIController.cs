@@ -272,11 +272,7 @@ public class EnemyAIController : MonoBehaviour
             _animator.SetBool("Walk",false);
             _animator.SetBool("Idle",false);
             _animator.SetBool("Attack",true);
-            if(_range){
-                if(!_enemyDead){
-                    skeletonAttack.Play();
-                }
-            }
+            skeletonAttack.Play();
             yield return new WaitForSeconds(0.4f);
 
             if(_range){
@@ -438,7 +434,7 @@ public class EnemyAIController : MonoBehaviour
         if(currentEnemy == Enemy.Tank)
         Instantiate(_smoke,new Vector3(transform.position.x,transform.position.y-2f,transform.position.z),Quaternion.identity);
         else if(currentEnemy == Enemy.Flying)
-        Instantiate(_smoke,new Vector3(transform.position.x,transform.position.y-4f,transform.position.z),Quaternion.identity);
+        Instantiate(_smoke,new Vector3(transform.position.x,transform.position.y-5.5f,transform.position.z),Quaternion.identity);
         else
         Instantiate(_smoke,transform.position,Quaternion.identity);
         
