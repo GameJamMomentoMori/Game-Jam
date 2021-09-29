@@ -29,6 +29,7 @@ public class DialogManager : MonoBehaviour
     public Animator op;
     public GameObject black;
     public GameObject black2;
+    public GameObject black3;
     public AudioSource music;
     public GameObject background;
     public GameObject waveSpawner;
@@ -211,10 +212,11 @@ public class DialogManager : MonoBehaviour
         //outro.Play();
         index = 0;
         sentenceComplete = true;
-        animator_dialogBox.Play("out");
-        animator_dialogText.Play("out");
-        yield return new WaitForSeconds(0.2f);
+        black3.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         dialogBox.SetActive(false);
+        op.Play("PortaitHalfOut");
+        pp.Play("PortaitHalfOut");
         dialogText.SetActive(false);
     }
     public void BoxFromWave(){
