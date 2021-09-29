@@ -53,6 +53,7 @@ public class CharStat : MonoBehaviour
     public void heal() {
         currHP = 100;
         Debug.Log("Player healed. HP at " + currHP);
+        HPBar.SetHealth(currHP);
     }
 
 }
