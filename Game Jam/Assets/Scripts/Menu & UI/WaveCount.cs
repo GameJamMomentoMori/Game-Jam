@@ -8,6 +8,7 @@ public class WaveCount : MonoBehaviour
 {
     public TMP_Text wave;
     public static int waveNumber = 1;
+    public Animator waveAnimator;
 
     void Start()
     {
@@ -16,7 +17,17 @@ public class WaveCount : MonoBehaviour
     
     public void NextWave()
     {
+        Animate();
         waveNumber += 1;
         wave.text = waveNumber.ToString();
+    }
+
+    public void SetOne(){
+        Animate();
+        wave.text = waveNumber.ToString();
+    }
+
+    void Animate(){
+        waveAnimator.Play("FadeOut");
     }
 }

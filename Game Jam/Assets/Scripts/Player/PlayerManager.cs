@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    public Animator blood;
+    public GameObject fade;
+
     #region Singleton
 
     public static PlayerManager instance;
@@ -19,7 +22,17 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer () {
         //restarts scene
-        Debug.Log("Player has died");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(DieAnimation());
+       
+    }
+
+    public IEnumerator DieAnimation(){
+        //dead = true;
+        yield return new WaitForSeconds(1f);
+        blood.SetBool("DeathAnimation",true);
+        yield return new WaitForSeconds(1f);
+        fade.SetActive(true);
+        //yield return new WaitForSeconds(1f);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

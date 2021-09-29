@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1003779386}
   - component: {fileID: 1003779385}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackgroundScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3911484276273327331}
   - component: {fileID: 7646719599413681490}
   - component: {fileID: 3091747406740732559}
+  - component: {fileID: 2984953167164921422}
   m_Layer: 5
   m_Name: WaveCounter
   m_TagString: Untagged
@@ -110,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 367, y: -25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3911484276273327331
@@ -223,6 +224,25 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &2984953167164921422
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540348778529908038}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53f61b8e50171a640be5f8fd60e6aaf6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8811447103111519531
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +717,7 @@ MonoBehaviour:
   HPBar: {fileID: 8811447105026502297}
   _blood: {fileID: 0}
   isPlayer: 0
+  damageSound: {fileID: 0}
 --- !u!1001 &1484781575992188929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -709,6 +730,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackFade
       objectReference: {fileID: 0}
+    - target: {fileID: 1484781577053594084, guid: b262d9fb69cd20740bfad76929f505f2,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1130217958}
     - target: {fileID: 1484781577053594085, guid: b262d9fb69cd20740bfad76929f505f2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -819,6 +845,12 @@ PrefabInstance:
 --- !u!224 &1130217956 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1484781577053594085, guid: b262d9fb69cd20740bfad76929f505f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484781575992188929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1130217958 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1484781577053594087, guid: b262d9fb69cd20740bfad76929f505f2,
     type: 3}
   m_PrefabInstance: {fileID: 1484781575992188929}
   m_PrefabAsset: {fileID: 0}
