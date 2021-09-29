@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     {        
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
+            if(!dialog.dialogDone) {
+                return;
+            }
             _playerRightAnimator.Play("Attack");
             if(!_delay2)
                 StartCoroutine(SoundDelay());
@@ -43,9 +46,6 @@ public class PlayerController : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
                     if(interactable.hasInteracted== false){
-                        if(!dialog.dialogDone) {
-                            return;
-                        }
                         interactable.Interact();
                         if (interactable.distance <= interactable.radius) {
                             slash.Play();
@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour
 
         // if we right click
         if(Input.GetMouseButtonDown(1)) {
+            if(!dialog.dialogDone) {
+                return;
+            }
             if(!_delay){
                 _playerLeftAnimator.Play("Magic Attack");
                 StartCoroutine(Projectile());
