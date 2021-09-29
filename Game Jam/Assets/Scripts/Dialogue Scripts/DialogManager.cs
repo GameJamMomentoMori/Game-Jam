@@ -227,7 +227,8 @@ public class DialogManager : MonoBehaviour
         dialogDone = false;
         index = 0;
         waveSpawner.SetActive(false);
-        FadeMusic.StartFade(music,3,0);
+        music.Stop();
+        //FadeMusic.StartFade(music,3f,0f);
         cutscene = 3;
         if(cutscene == 2 || cutscene == 3){
             sentences = new string[11];
