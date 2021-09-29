@@ -49,4 +49,10 @@ public class CharStat : MonoBehaviour
      public void BloodAnimation(){
         _blood.Play("Blood");
     }
+
+    public void heal() {
+        currHP = 100;
+        Debug.Log("Player healed. HP at" + currHP);
+    }
+
 }

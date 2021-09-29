@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
     Transform player;
     public bool hasInteracted = false;
     public bool isRanged = false;
+    public bool isHealth = false;
     public Transform interactionTransform;
     public float distance;
     EnemyAIController enemyAI;
@@ -16,7 +17,11 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact() {
         //This method is meant to be overwritten
-        if (isRanged) {
+        if (isHealth) {
+            playerStats.heal();
+
+            isHealth = false;
+        } else if (isRanged) {
             
             enemyStats.TakeDmg(playerStats.dmg.getVal() / 2);
             enemyAI.enemyDamaged();
