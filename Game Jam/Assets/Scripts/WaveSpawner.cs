@@ -6,6 +6,7 @@ public class WaveSpawner : MonoBehaviour
 
     public enum SpawnState {Spawning, Waiting, Counting}
     public WaveCount WCount;
+    public GameObject WaveCountOBJ;
 
     //IANS CHANGES
     //Wave enemy and enemy count vars are now arrays. can define 
@@ -45,6 +46,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(SetWaveNumber());
         //check to make sure that some spawn points are referenced
         if(spawnPoints.Length == 0)
         {
@@ -137,7 +139,7 @@ public class WaveSpawner : MonoBehaviour
         else if(_wave.enemy.Length == _wave.Enemies.Length){
             Debug.Log("Spawning Wave: " + _wave.name);
             state = SpawnState.Spawning;
-
+            
             for(int h = 0; h < _wave.enemy.Length; h++){
             //Spawn enemies
                 for(int i = 0; i < _wave.Enemies[h]; i++){
@@ -166,6 +168,11 @@ public class WaveSpawner : MonoBehaviour
 
         //Spawn Enemy
         Debug.Log("Spawning Enemy: " + _enemy.name);
+    }
+
+    IEnumerator SetWaveNumber(){
+        yield return new WaitForSeconds(timeBetweenWaves);
+        WCount.SetOne();
     }
 
 }

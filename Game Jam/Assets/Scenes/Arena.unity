@@ -6220,12 +6220,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9faee17a157b9144394169ff5b2d3a52, type: 3}
---- !u!95 &332776406 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1130217958, guid: e52e3a49a2d352445b81c54c0ecd760a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1213422225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &347557068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9322,6 +9316,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689df1f49f65b0d4490952a91be2988f, type: 3}
+--- !u!1 &500551617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1130217955, guid: e52e3a49a2d352445b81c54c0ecd760a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213422225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &502466210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15875,6 +15875,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 818794388}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &865697508 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2984953167164921422, guid: e52e3a49a2d352445b81c54c0ecd760a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213422225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &868375134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2169968192274518418, guid: 30feef45ca35d284490c4eebf3c6673c,
@@ -20798,23 +20804,39 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1003779383, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
-      propertyPath: m_Name
-      value: BackgroundScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 1130217955, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1130217957, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 332776406}
     - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
       propertyPath: m_text
-      value: 
+      value: '
+
+'
       objectReference: {fileID: 0}
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3053453311
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646719599413681490, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: waveAnimator
+      value: 
+      objectReference: {fileID: 865697508}
     - target: {fileID: 8811447103449361800, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -20979,6 +21001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WCount: {fileID: 1725482311}
+  WaveCountOBJ: {fileID: 0}
   waves:
   - name: Wave 1 - 3 Melee Enemies
     enemy:
@@ -27101,6 +27124,16 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1760164377487576873, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+        type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 500551617}
+    - target: {fileID: 1760164377487576873, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 745122273}
     - target: {fileID: 6300306051578700571, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: m_RootOrder
