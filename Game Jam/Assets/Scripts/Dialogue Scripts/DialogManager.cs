@@ -28,6 +28,7 @@ public class DialogManager : MonoBehaviour
     public Animator dp;
     public Animator op;
     public GameObject black;
+    public GameObject black2;
     public AudioSource music;
     public GameObject background;
     public GameObject waveSpawner;
@@ -73,20 +74,7 @@ public class DialogManager : MonoBehaviour
             sentences[7] = " ";
         }
 
-        if(cutscene == 2 || cutscene == 3){
-            sentences = new string[11];
-            sentences[0] = "That should be… the last of them… Had me worried for a bit there… now to find Araphel...";
-            sentences[1] = "Well done traveler.  I suppose I misjudged you in a few places.";
-            sentences[2] = "Old timer?  What are you doing here? Do you work for Araphel?";
-            sentences[3] = "I have come to collect.  I congratulate you on your victory over Araphel’s forces, young heroine.  Even still, you should have listened to me before.  Now it is too late to greet me with open arms.";
-            sentences[4] = "Greet you?  What are you talking about?";
-            sentences[5] = "Come with me, young heroine.  You must accept what has come to pass.";
-            sentences[6] = "There is still time!  I just have to find the cure!  It has to be here among Araphel’s tonics…";
-            sentences[7] = "My afflictions have no cure.  Join me in the abyss.  There is no escape.";
-            sentences[8] = "I’ll not go quietly!  I’ve avoided you for this long.  If you want my life, you’ll have to take it!";
-            sentences[9] = "So be it. ";
-            sentences[10] = " ";
-        }
+        
         StartCoroutine(BoxIn());
         Player = GameObject.Find("FirstPersonPlayer");
     }
@@ -229,13 +217,32 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(false);
         dialogText.SetActive(false);
     }
-
+    public void BoxFromWave(){
+        StartCoroutine(BoxIn());
+        black2.SetActive(true);
+        
+    }
     public IEnumerator BoxIn(){
         if(cutscene == 2){
         dialogDone = false;
+        index = 0;
         waveSpawner.SetActive(false);
         FadeMusic.StartFade(music,3,0);
         cutscene = 3;
+        if(cutscene == 2 || cutscene == 3){
+            sentences = new string[11];
+            sentences[0] = "That should be… the last of them… Had me worried for a bit there… now to find Araphel...";
+            sentences[1] = "Well done traveler.  I suppose I misjudged you in a few places.";
+            sentences[2] = "Old timer?  What are you doing here? Do you work for Araphel?";
+            sentences[3] = "I have come to collect.  I congratulate you on your victory over Araphel’s forces, young heroine.  Even still, you should have listened to me before.  Now it is too late to greet me with open arms.";
+            sentences[4] = "Greet you?  What are you talking about?";
+            sentences[5] = "Come with me, young heroine.  You must accept what has come to pass.";
+            sentences[6] = "There is still time!  I just have to find the cure!  It has to be here among Araphel’s tonics…";
+            sentences[7] = "My afflictions have no cure.  Join me in the abyss.  There is no escape.";
+            sentences[8] = "I’ll not go quietly!  I’ve avoided you for this long.  If you want my life, you’ll have to take it!";
+            sentences[9] = "So be it. ";
+            sentences[10] = " ";
+        }
         }
 
         if(cutscene == 0)
