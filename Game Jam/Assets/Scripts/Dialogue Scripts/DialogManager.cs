@@ -25,6 +25,7 @@ public class DialogManager : MonoBehaviour
     public Animator pp;
     public Animator dp;
     public Animator op;
+    public bool dialogDone = false;
 
     public AudioSource click;
 
@@ -35,14 +36,15 @@ public class DialogManager : MonoBehaviour
     {
         StartCoroutine(BoxIn());
         if(cutscene == 1){
-            sentences = new string[7];
+            sentences = new string[8];
             sentences[0] = "Hold, adventurer!  What business have you in the Lord Araphel’s castle?";
             sentences[1] = "Well if you need to know, old-timer, I am on my way to conscript his aid. Because of all my traveling, I've caught some disease not a single doctor could get rid of.  I figured this Araphel character might be able to cure what ails me with one of his potions.";
             sentences[2] = "You ought to know, traveler, that Araphel is not a kind man known for charity.  His abode is ripe with all manner of foul beasts and ghouls.  Nary a single warrior has emerged from the castle alive, and quite honestly, I doubt you will be the first.  I would recommend you turn away now.  Go home and greet Death with open arms in peace.";
             sentences[3] = "Death?  Look at me old man!  I am the most capable fighter this rotten hamlet has ever seen!  There is not a scratch upon my armor nor a scar on my face.  Death has not so much as whispered my name aloud, let alone get anywhere near me!  Hell, if I saw Death, I would cut him down where he stood, the same as any other cur!";
             sentences[4] = "With enthusiasm such as that, you will meet your end soon enough.  I will pray the beast that makes your end has the decency to do so quickly and cleanly.";
             sentences[5] = "Save your prayers, old man.  I may just liberate this rat pit from its bastard of a lord.";
-            sentences[6] = "Poor, poor traveler";
+            sentences[6] = "Poor, poor traveler...";
+            sentences[7] = " ";
         }
         if(cutscene == 2){
             sentences = new string[9];
@@ -68,9 +70,39 @@ public class DialogManager : MonoBehaviour
             }
 
         if(sentenceComplete){
-            if(Input.GetKeyDown("e")){
-                
-               
+            if(Input.GetKeyDown(KeyCode.Return)){
+                sentenceComplete = false;
+                NextSentence();
+                if(cutscene == 1 && index == 1){
+                    pp.Play("PortraitIn");
+                    op.Play("PortraitOut");
+                }
+                if(cutscene == 1 && index == 2){
+                    op.Play("PortraitIn");
+                    pp.Play("PortraitOut");
+                }
+               if(cutscene == 1 && index == 3){
+                    pp.Play("PortraitIn");
+                    op.Play("PortraitOut");
+                }
+                if(cutscene == 1 && index == 4){
+                    op.Play("PortraitIn");
+                    pp.Play("PortraitOut");
+                }
+                if(cutscene == 1 && index == 5){
+                    pp.Play("PortraitIn");
+                    op.Play("PortraitOut");
+                }
+                if(cutscene == 1 && index == 6){
+                    op.Play("PortraitIn");
+                    pp.Play("PortraitOut");
+                }
+                if(cutscene == 1 && index == 7){
+                    StartCoroutine(BoxOut());
+                }
+                // if(cutscene == 1 && index == 8){
+                //    StartCoroutine(BoxOut());
+                // }
             }
         }
     }
@@ -81,7 +113,7 @@ public class DialogManager : MonoBehaviour
                 StartCoroutine(Type());
             }
             else{
-                StartCoroutine(EndDialog());
+                StartCoroutine(BoxOut());
                 textDisplay.text = "";
             }
     }
@@ -97,15 +129,30 @@ public class DialogManager : MonoBehaviour
         dialogText.SetActive(false);
     }
     IEnumerator BoxIn(){
+        //Time.timeScale = 0f;
         yield return new WaitForSeconds(2f);
         animator_dialogBox.Play("SlideIn");
         animator_dialogText.Play("SlideIn");
         yield return new WaitForSeconds(1.5f);
+        op.Play("PortraitHalf");
+        pp.Play("PortraitHalf");
+        yield return new WaitForSeconds(1.2f);
         op.Play("PortraitIn");
-        yield return new WaitForSeconds(0.7f);
          sentenceComplete = false;
                 NextSentence();
 
+    }
+
+     IEnumerator BoxOut(){
+         cutscene = 2;
+        //Time.timeScale = 0f;
+        op.Play("PortaitHalfOut");
+        pp.Play("PortaitHalfOut");
+        yield return new WaitForSeconds(1f);
+        animator_dialogBox.Play("SlideOut");
+        animator_dialogText.Play("SlideOut");
+        yield return new WaitForSeconds(2f);
+        dialogDone = true;
     }
     IEnumerator Type(){
         foreach (char letter in sentences[index].ToCharArray()){ 
