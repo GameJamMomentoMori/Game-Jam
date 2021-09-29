@@ -212,9 +212,15 @@ public class DialogManager : MonoBehaviour
         dialogText.SetActive(false);
     }
 
-    IEnumerator BoxIn(){
+    public IEnumerator BoxIn(){
+        if(cutscene == 2)
+        cutscene = 3;
+
+        if(cutscene == 0)
+        cutscene =1;
         //Time.timeScale = 0f;
         yield return new WaitForSeconds(1f);
+        background.SetActive(true);
         animator_dialogBox.Play("SlideIn");
         animator_dialogText.Play("SlideIn");
         yield return new WaitForSeconds(1.5f);

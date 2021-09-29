@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
     public WaveCount WCount;
     public GameObject WaveCountOBJ;
     public DialogManager dialog;
+    public GameObject black;
 
     //IANS CHANGES
     //Wave enemy and enemy count vars are now arrays. can define 
@@ -103,6 +104,8 @@ public class WaveSpawner : MonoBehaviour
         {
             nextWave = 0;
             Debug.Log("All Waves Complete! Looping...");
+            black.SetActive(true);
+            StartCoroutine(dialog.BoxIn());
 
         }
 

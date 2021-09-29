@@ -21000,7 +21000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1222260685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21015,7 +21015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WCount: {fileID: 1725482311}
   WaveCountOBJ: {fileID: 0}
-  dialog: {fileID: 0}
+  dialog: {fileID: 5757955283697036541}
+  black: {fileID: 4181487442997089570}
   waves:
   - name: Wave 1 - 3 Melee Enemies
     enemy:
@@ -38524,7 +38525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  cutscene: 3
+  cutscene: 0
   dialogBox: {fileID: 5757955283348291477}
   dialogText: {fileID: 5757955284181181270}
   sentences:
