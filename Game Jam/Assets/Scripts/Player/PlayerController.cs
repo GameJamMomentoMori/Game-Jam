@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _firepointTransform;
     [SerializeField] bool _delay = false;
     [SerializeField] bool _delay2 = false;
+    public GameObject dialogmanager;
     public DialogManager dialog;
     public Interactable focus;
     CharStat myStats;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         myStats = GetComponent<CharStat>();
         charAtk = this.GetComponent<CharacterCombat>();
+        dialog = dialogmanager.GetComponent<DialogManager>(); 
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
                     if(interactable.hasInteracted== false){
-                        if(!dialog.dialogDone) {
+                        if(!dialog.GetDialogStatus()) {
                             return;
                         }
                         interactable.Interact();

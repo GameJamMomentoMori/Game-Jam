@@ -20815,7 +20815,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1130217955, guid: e52e3a49a2d352445b81c54c0ecd760a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
@@ -21000,7 +21000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1222260685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26745,7 +26745,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e04554538ec10dd41aa4ae3bb3b1dd7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.29
+      value: 8.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e04554538ec10dd41aa4ae3bb3b1dd7f,
         type: 3}
@@ -27229,6 +27229,11 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1019004427}
+    - target: {fileID: 1988779065708206853, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+        type: 3}
+      propertyPath: dialogmanager
+      value: 
+      objectReference: {fileID: 5757955283697036538}
     - target: {fileID: 3401147734936614129, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: fade
@@ -38570,6 +38575,7 @@ MonoBehaviour:
   op: {fileID: 5757955283970196967}
   black: {fileID: 4181487442997089570}
   background: {fileID: 5757955282293713780}
+  waveSpawner: {fileID: 1222260684}
   line1: {fileID: 2077062105}
   line2: {fileID: 2077062116}
   line3: {fileID: 2077062107}

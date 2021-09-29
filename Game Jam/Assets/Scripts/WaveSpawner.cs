@@ -102,8 +102,8 @@ public class WaveSpawner : MonoBehaviour
         //if the next wave is out of bounds on the array
         if(nextWave + 1 > waves.Length - 1)
         {
-            nextWave = 0;
-            Debug.Log("All Waves Complete! Looping...");
+            //nextWave = 0;
+           // Debug.Log("All Waves Complete! Looping...");
             black.SetActive(true);
             StartCoroutine(dialog.BoxIn());
 

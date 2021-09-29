@@ -1374,6 +1374,7 @@ MonoBehaviour:
   _firepointTransform: {fileID: 6629890186715544018}
   _delay: 0
   _delay2: 0
+  dialogmanager: {fileID: 0}
   focus: {fileID: 0}
   enemyStats: {fileID: 0}
   charAtk: {fileID: 0}

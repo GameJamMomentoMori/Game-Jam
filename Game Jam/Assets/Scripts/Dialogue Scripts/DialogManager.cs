@@ -30,6 +30,7 @@ public class DialogManager : MonoBehaviour
     public GameObject black;
 
     public GameObject background;
+    public GameObject waveSpawner;
 
     public AudioSource line1;
     public AudioSource line2;
@@ -60,7 +61,7 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
        
-        if(cutscene == 1){
+        if(cutscene == 0 || cutscene == 1){
             sentences = new string[8];
             sentences[0] = "Hold, adventurer!  What business have you in the Lord Araphel’s castle?";
             sentences[1] = "Well if you need to know, old-timer, I am on my way to conscript his aid. Because of all my traveling, I've caught some disease not a single doctor could get rid of.  I figured this Araphel character might be able to cure what ails me with one of his potions.";
@@ -72,7 +73,7 @@ public class DialogManager : MonoBehaviour
             sentences[7] = " ";
         }
 
-        if(cutscene == 3){
+        if(cutscene == 2 || cutscene == 3){
             sentences = new string[11];
             sentences[0] = "That should be… the last of them… Had me worried for a bit there… now to find Araphel...";
             sentences[1] = "Well done traveler.  I suppose I misjudged you in a few places.";
@@ -259,7 +260,7 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         //black.Play("FadeOut");
         dialogDone = true;
-        
+        waveSpawner.SetActive(true);
     }
 
     IEnumerator EndGame(){
@@ -276,5 +277,9 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed[index]);
         }
 
+    }
+
+    public bool GetDialogStatus(){
+        return dialogDone;
     }
 }
