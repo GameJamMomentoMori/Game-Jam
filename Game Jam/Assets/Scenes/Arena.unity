@@ -39708,6 +39708,7 @@ MonoBehaviour:
   dp: {fileID: 5757955283281699002}
   op: {fileID: 5757955283970196967}
   black: {fileID: 4181487442997089570}
+  black2: {fileID: 1627339144}
   music: {fileID: 1299152595}
   background: {fileID: 5757955282293713780}
   waveSpawner: {fileID: 1222260684}
