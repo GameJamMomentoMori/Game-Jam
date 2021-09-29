@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _firepointTransform;
     [SerializeField] bool _delay = false;
     [SerializeField] bool _delay2 = false;
+    public DialogManager dialog;
     public Interactable focus;
     CharStat myStats;
     [SerializeField] EnemyHealthController enemyStats;
@@ -28,15 +29,12 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-        
+    {        
         // if we left click
         if(Input.GetMouseButtonDown(0)) {
             _playerRightAnimator.Play("Attack");
             if(!_delay2)
                 StartCoroutine(SoundDelay());
-           
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             Debug.DrawRay(ray.origin, ray.direction * 1000, new Color(1f,0.922f,0.016f,1f));
@@ -44,8 +42,10 @@ public class PlayerController : MonoBehaviour
             if(Physics.Raycast(ray, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if(interactable != null) {
-                    
                     if(interactable.hasInteracted== false){
+                        if(!dialog.dialogDone) {
+                            return;
+                        }
                         interactable.Interact();
                         if (interactable.distance <= interactable.radius) {
                             slash.Play();

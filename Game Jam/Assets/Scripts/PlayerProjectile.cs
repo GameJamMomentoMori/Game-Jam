@@ -18,7 +18,7 @@ public class PlayerProjectile : MonoBehaviour
     CharStat charstat, enemyStats;
     CharacterCombat charAtk;
     public AudioSource explosion;
-
+    public DialogManager dialog;
     EnemyAIController enemyAI;
     
     void Awake(){
@@ -57,6 +57,9 @@ public class PlayerProjectile : MonoBehaviour
             Interactable interactable = other.GetComponent<Collider>().GetComponent<Interactable>();
             if(interactable != null) {
                     if(interactable.hasInteracted== false) {
+                        if(!dialog.dialogDone) {
+                            return;
+                        }
                         interactable.isRanged = true;
                         interactable.Interact();
                     }
