@@ -106,7 +106,7 @@ public class DialogManager : MonoBehaviour
 
                 if(cutscene == 1 && index == 1){
                     line2.Play();
-                    line2.Stop();
+                    line1.Stop();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
