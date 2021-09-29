@@ -25,6 +25,27 @@ public class DialogManager : MonoBehaviour
     public Animator pp;
     public Animator dp;
     public Animator op;
+    public GameObject black;
+
+    public GameObject background;
+
+    public AudioSource line1;
+    public AudioSource line2;
+    public AudioSource line3;
+    public AudioSource line4;
+    public AudioSource line5;
+    public AudioSource line6;
+    public AudioSource line7;
+    public AudioSource line8;
+    public AudioSource line9;
+    public AudioSource line10;
+    public AudioSource line11;
+    public AudioSource line12;
+    public AudioSource line13;
+    public AudioSource line14;
+    public AudioSource line15;
+    public AudioSource line16;
+
     public bool dialogDone = false;
 
     public AudioSource click;
@@ -74,26 +95,32 @@ public class DialogManager : MonoBehaviour
                 sentenceComplete = false;
                 NextSentence();
                 if(cutscene == 1 && index == 1){
+                    line2.Play();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 2){
+                    line3.Play();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
                if(cutscene == 1 && index == 3){
+                   line4.Play();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 4){
+                    line5.Play();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 5){
+                    line6.Play();
                     pp.Play("PortraitIn");
                     op.Play("PortraitOut");
                 }
                 if(cutscene == 1 && index == 6){
+                    line7.Play();
                     op.Play("PortraitIn");
                     pp.Play("PortraitOut");
                 }
@@ -130,7 +157,7 @@ public class DialogManager : MonoBehaviour
     }
     IEnumerator BoxIn(){
         //Time.timeScale = 0f;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         animator_dialogBox.Play("SlideIn");
         animator_dialogText.Play("SlideIn");
         yield return new WaitForSeconds(1.5f);
@@ -139,6 +166,7 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         op.Play("PortraitIn");
          sentenceComplete = false;
+         line1.Play();
                 NextSentence();
 
     }
@@ -151,8 +179,13 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animator_dialogBox.Play("SlideOut");
         animator_dialogText.Play("SlideOut");
-        yield return new WaitForSeconds(2f);
+        black.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        background.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        //black.Play("FadeOut");
         dialogDone = true;
+        
     }
     IEnumerator Type(){
         foreach (char letter in sentences[index].ToCharArray()){ 
