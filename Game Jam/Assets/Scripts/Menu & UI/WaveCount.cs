@@ -7,13 +7,13 @@ using TMPro;
 public class WaveCount : MonoBehaviour
 {
     public TMP_Text wave;
-    public static int waveNumber;
+    public static int waveNumber = 1;
 
     void Start()
     {
         //wave = GetComponent<Text>();
     }
-
+    
     public void NextWave()
     {
         waveNumber += 1;

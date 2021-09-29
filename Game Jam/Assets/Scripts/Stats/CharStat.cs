@@ -10,7 +10,7 @@ public class CharStat : MonoBehaviour
     public HUDHealth HPBar;
     public Animator _blood;
     public bool isPlayer;
-    
+    public AudioSource damageSound;
     void Start()
     {
         //HPBar = GameObject.Find("HealthBar");
@@ -27,9 +27,10 @@ public class CharStat : MonoBehaviour
         dmg -= armor.getVal();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
         currHP -= dmg;
-        if(isPlayer)
+        if(isPlayer){
             BloodAnimation();
-    
+            damageSound.Play();
+        }
         HPBar.SetHealth(currHP);
 
         Debug.Log(transform.name + " takes " + dmg + " damage");

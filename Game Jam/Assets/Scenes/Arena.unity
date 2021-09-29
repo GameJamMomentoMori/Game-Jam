@@ -5514,6 +5514,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689df1f49f65b0d4490952a91be2988f, type: 3}
+--- !u!82 &304750110 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 304750110, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+    type: 3}
+  m_PrefabInstance: {fileID: 1591558477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &304767826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7163559476250896143, guid: 7a37dcfd10b6e244494b7127103822c2,
@@ -20804,6 +20810,11 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 332776406}
+    - target: {fileID: 3091747406740732559, guid: e52e3a49a2d352445b81c54c0ecd760a,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8811447103449361800, guid: e52e3a49a2d352445b81c54c0ecd760a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -27065,6 +27076,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 304750110, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
+      propertyPath: m_Volume
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 888626027, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
       propertyPath: HPBar
       value: 
@@ -27073,10 +27088,19 @@ PrefabInstance:
       propertyPath: _blood
       value: 
       objectReference: {fileID: 745122273}
+    - target: {fileID: 888626027, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 304750110}
     - target: {fileID: 888626028, guid: 2fc996ebff75fbf4d90f74e19c0f9748, type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 1019004427}
+    - target: {fileID: 1716447866701671876, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 6300306051578700571, guid: 2fc996ebff75fbf4d90f74e19c0f9748,
         type: 3}
       propertyPath: m_RootOrder

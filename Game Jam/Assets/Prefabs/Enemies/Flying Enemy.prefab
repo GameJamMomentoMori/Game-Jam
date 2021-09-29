@@ -625,6 +625,7 @@ MonoBehaviour:
   witchFire: {fileID: 0}
   acidSpit: {fileID: 2002942913799694215}
   tankAttack: {fileID: 0}
+  skeletonAttack: {fileID: 0}
   _enemyDead: 0
   agent: {fileID: 7479628758061658213}
   _projectilePrefab: {fileID: 6080606393407781269, guid: fbf4f5ae8c88c6143b6b0cffedbbbeee,
@@ -763,6 +764,7 @@ MonoBehaviour:
   HPBar: {fileID: 853469737571619874, guid: 4f46ea68ab667414e8c801b38020722f, type: 3}
   _blood: {fileID: 0}
   isPlayer: 0
+  damageSound: {fileID: 0}
 --- !u!114 &-4077440963645520640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +902,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9c43382cf42401f46a2180468194d624,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f2fdc11c5ef9e674db78fae7ac48603b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
