@@ -7,9 +7,12 @@ public class Rotator : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float _speed;
     [SerializeField] GameObject _particles;
-    void Start()
-    {
-        
+    PlayerStats playerStats;
+
+    void Awake()
+    {   
+        GameObject playerObj = GameObject.Find("FirstPersonPlayer");
+        playerStats = playerObj.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -21,6 +24,9 @@ public class Rotator : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
             Instantiate(_particles,new Vector3(transform.position.x,transform.position.y+1,transform.position.z),Quaternion.identity);
+            Debug.Log("Picking up " + gameObject.name);            
+            playerStats.heal();
+
             Destroy(this.gameObject);
         }
     }

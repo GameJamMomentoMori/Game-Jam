@@ -46,9 +46,9 @@ public class PlayerController : MonoBehaviour
                 if(interactable != null) {
                     
                     if(interactable.hasInteracted== false){
-                    interactable.Interact();
+                        interactable.Interact();
                         if (interactable.distance <= interactable.radius) {
-                        slash.Play();
+                            slash.Play();
                         }
                     }
                 }

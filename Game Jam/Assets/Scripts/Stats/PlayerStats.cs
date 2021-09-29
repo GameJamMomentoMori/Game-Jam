@@ -29,5 +29,4 @@ public class PlayerStats : CharStat
         PlayerManager.instance.KillPlayer();
     }
 
-   
 }

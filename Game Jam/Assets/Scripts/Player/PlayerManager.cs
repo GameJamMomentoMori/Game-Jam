@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer () {
         //restarts scene
+        Debug.Log("Player has died");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
