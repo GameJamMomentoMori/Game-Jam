@@ -46,7 +46,7 @@ public class CharStat : MonoBehaviour
         Debug.Log(transform.name + " died");
     }
 
-     public void BloodAnimation(){
+    public void BloodAnimation(){
         _blood.Play("Blood");
     }
 
