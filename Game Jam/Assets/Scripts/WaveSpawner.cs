@@ -7,6 +7,7 @@ public class WaveSpawner : MonoBehaviour
     public enum SpawnState {Spawning, Waiting, Counting}
     public WaveCount WCount;
     public GameObject WaveCountOBJ;
+    public DialogManager dialog;
 
     //IANS CHANGES
     //Wave enemy and enemy count vars are now arrays. can define 
@@ -133,6 +134,10 @@ public class WaveSpawner : MonoBehaviour
     //A method for spawning the waves specified in the list
     IEnumerator SpawnWave (Wave _wave)
     {
+        if (!dialog.dialogDone) {
+            yield return new WaitForSeconds(10f);
+        }
+
         if(_wave.enemy.Length != _wave.Enemies.Length){
             Debug.LogError("Unable to Spawn Wave: " + _wave.name + ". Enemy types array and enemy count array sizes do not match.");    
         }
