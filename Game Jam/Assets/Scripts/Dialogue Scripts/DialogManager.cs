@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class DialogManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -45,6 +47,8 @@ public class DialogManager : MonoBehaviour
     public AudioSource line14;
     public AudioSource line15;
     public AudioSource line16;
+    public AudioSource line17;
+    public AudioSource line18;
 
     public bool dialogDone = false;
 
@@ -55,7 +59,7 @@ public class DialogManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(BoxIn());
+       
         if(cutscene == 1){
             sentences = new string[8];
             sentences[0] = "Hold, adventurer!  What business have you in the Lord Araphel’s castle?";
@@ -67,19 +71,23 @@ public class DialogManager : MonoBehaviour
             sentences[6] = "Poor, poor traveler...";
             sentences[7] = " ";
         }
-        if(cutscene == 2){
-            sentences = new string[9];
+
+        if(cutscene == 3){
+            sentences = new string[11];
             sentences[0] = "That should be… the last of them… Had me worried for a bit there… now to find Araphel...";
-            sentences[1] = "Well done traveler.  I suppose I misjudged you in a few places";
-            sentences[2] = "I have come to collect.  I congratulate you on your victory over Araphel’s forces, young heroine.  Even still, you should have listened to me before.  Now it is too late to greet me with open arms.";
-            sentences[3] = "Greet you?  What are you talking about?";
-            sentences[4] = "Come with me, young heroine.  You must accept what has come to pass.";
-            sentences[5] = "There is still time!  I just have to find the cure!  It has to be here among Araphel’s tonics…";
-            sentences[6] = "My afflictions have no cure.  Join me in the abyss.  There is no escape.";
-            sentences[7] = "I’ll not go quietly!  I’ve avoided you for this long.  If you want my life, you’ll have to take it!";
-            sentences[8] = "So be it. ";
+            sentences[1] = "Well done traveler.  I suppose I misjudged you in a few places.";
+            sentences[2] = "Old timer?  What are you doing here? Do you work for Araphel?";
+            sentences[3] = "I have come to collect.  I congratulate you on your victory over Araphel’s forces, young heroine.  Even still, you should have listened to me before.  Now it is too late to greet me with open arms.";
+            sentences[4] = "Greet you?  What are you talking about?";
+            sentences[5] = "Come with me, young heroine.  You must accept what has come to pass.";
+            sentences[6] = "There is still time!  I just have to find the cure!  It has to be here among Araphel’s tonics…";
+            sentences[7] = "My afflictions have no cure.  Join me in the abyss.  There is no escape.";
+            sentences[8] = "I’ll not go quietly!  I’ve avoided you for this long.  If you want my life, you’ll have to take it!";
+            sentences[9] = "So be it. ";
+            sentences[10] = " ";
         }
-        Player = GameObject.Find("Player");
+        StartCoroutine(BoxIn());
+        Player = GameObject.Find("FirstPersonPlayer");
     }
 
     // Update is called once per frame
@@ -94,6 +102,7 @@ public class DialogManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Return)){
                 sentenceComplete = false;
                 NextSentence();
+
                 if(cutscene == 1 && index == 1){
                     line2.Play();
                     pp.Play("PortraitIn");
@@ -127,9 +136,56 @@ public class DialogManager : MonoBehaviour
                 if(cutscene == 1 && index == 7){
                     StartCoroutine(BoxOut());
                 }
-                // if(cutscene == 1 && index == 8){
-                //    StartCoroutine(BoxOut());
-                // }
+
+
+
+               if(cutscene == 3 && index == 1){
+                    line9.Play();
+                    pp.Play("PortraitOut");
+                    op.Play("PortraitFullIn");
+                }
+                if(cutscene == 3 && index == 2){
+                    line10.Play();
+                    op.Play("PortraitOut");
+                    pp.Play("PortraitIn");
+                }
+                if(cutscene == 3 && index == 3){
+                    line11.Play();
+                    pp.Play("PortraitOut");
+                    op.Play("PortraitIn");
+                }
+                if(cutscene == 3 && index == 4){
+                    line12.Play();
+                    pp.Play("PortraitIn");
+                    op.Play("PortraitOut");
+                }
+                if(cutscene == 3 && index == 5){
+                    line13.Play();
+                    op.Play("PortaitHalfOut");
+                    dp.Play("PortraitFullIn");
+                    pp.Play("PortraitOut");
+                }
+                if(cutscene == 3 && index == 6){
+                    line14.Play();
+                    dp.Play("PortraitOut");
+                    pp.Play("PortraitIn");
+                }
+                if(cutscene == 3 && index == 7){
+                    line15.Play();
+                    dp.Play("PortraitIn");
+                    pp.Play("PortraitOut");
+                }
+                if(cutscene == 3 && index == 8){
+                    line16.Play();
+                    dp.Play("PortraitOut");
+                    pp.Play("PortraitIn");
+                }
+                if(cutscene == 3 && index == 9){
+                    line17.Play();
+                    dp.Play("PortraitIn");
+                    pp.Play("PortraitOut");
+                    StartCoroutine(EndGame());
+                }
             }
         }
     }
@@ -155,18 +211,30 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(false);
         dialogText.SetActive(false);
     }
+
     IEnumerator BoxIn(){
         //Time.timeScale = 0f;
         yield return new WaitForSeconds(1f);
         animator_dialogBox.Play("SlideIn");
         animator_dialogText.Play("SlideIn");
         yield return new WaitForSeconds(1.5f);
-        op.Play("PortraitHalf");
-        pp.Play("PortraitHalf");
+        if(cutscene == 1){
+            op.Play("PortraitHalf");
+            pp.Play("PortraitHalf");
+        }
+        if(cutscene == 3){
+            pp.Play("PortraitFullIn");
+        }
         yield return new WaitForSeconds(1.2f);
+        if(cutscene == 1)
         op.Play("PortraitIn");
+
          sentenceComplete = false;
+         if(cutscene == 1)
          line1.Play();
+
+         if(cutscene == 3)
+         line8.Play();
                 NextSentence();
 
     }
@@ -187,6 +255,14 @@ public class DialogManager : MonoBehaviour
         dialogDone = true;
         
     }
+
+    IEnumerator EndGame(){
+        yield return new WaitForSeconds(2f);
+        black.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(2);
+    }
+
     IEnumerator Type(){
         foreach (char letter in sentences[index].ToCharArray()){ 
             textDisplay.text += letter;
